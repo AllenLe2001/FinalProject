@@ -4,8 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - PatrolBarrier1
-  - PatrolBarrier2
+  - PatrolBarrier
+  - Knight
   layers:
   - Default
   - TransparentFX
