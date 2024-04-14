@@ -283,7 +283,7 @@ Transform:
   m_GameObject: {fileID: 450915507}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.5, y: -1.46, z: 0}
+  m_LocalPosition: {x: 7.54, y: -1.48, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -305,10 +305,14 @@ MonoBehaviour:
   PatrolBoundary1: {fileID: 920190122}
   PatrolBoundary2: {fileID: 1339689609}
   knightSprite: {fileID: 450915512}
-  attackDistance: 0
+  knightDistance: 0
+  attackDistance: 1
   isInRange: 0
-  endPatrolPos: {x: 0, y: 0, z: 0}
-  moveSpeed: 2
+  moveSpeed: 1
+  chasePCoordX: 11
+  chaseNCoordX: -11
+  chaseDistance: 4
+  playerXcoord: 0
   moveDirection: {x: -1, y: 0}
   m_nState: 0
 --- !u!212 &450915512
@@ -524,7 +528,7 @@ Transform:
   m_GameObject: {fileID: 474352211}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.41, y: -1.64, z: 0}
+  m_LocalPosition: {x: -8.52, y: -1.77, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

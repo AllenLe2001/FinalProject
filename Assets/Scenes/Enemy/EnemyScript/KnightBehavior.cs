@@ -23,12 +23,16 @@ public class KnightBehavior : MonoBehaviour
     }
 
     //external variables that we can tune
+    public float knightDistance;
     public float attackDistance;
     public bool isInRange;
-    public Vector3 endPatrolPos;
     public float moveSpeed = 0.5f;
+    public float chasePCoordX;
+    public float chaseNCoordX;
+    public float chaseDistance = 2f;
+    public float playerXcoord;
     // intital movement for the enemy (this is -1 Left 1 is right)
-    public Vector2 moveDirection = Vector2.left; 
+    public Vector2 moveDirection;
 
     //internal variables
     public eState m_nState;
@@ -37,7 +41,6 @@ public class KnightBehavior : MonoBehaviour
     {
         //initialize the enemy state to patrolling
         m_nState = eState.kPatrol;
-        endPatrolPos = PatrolBoundary2.position;
         knightSprite = GetComponent<SpriteRenderer>();
         anim = GetComponentInChildren<Animator>();
     }
@@ -45,17 +48,24 @@ public class KnightBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        playerXcoord = Player.position.x;
         //different states of the knight enemy
         switch (m_nState)
         {
             case eState.kPatrol:
             {
+                knightDistance = Vector2.Distance(transform.position, Player.position);
+                //check if the distance from player and knight is close enough
+                //if it is then we set to chase state
+                if(knightDistance <= chaseDistance){
+                        m_nState = eState.kChase;
+                  }
                 anim.SetFloat("Speed", 0, 0.1f, Time.deltaTime);
                 //also check the movement direction so we can flip the sprite
-                if(moveDirection == Vector2.right){
+                if(moveDirection.x > 0){
                     knightSprite.flipX = true;
                 }
-                else if(moveDirection == Vector2.left){
+                else if(moveDirection.x < 0){
                     knightSprite.flipX = false;
                 }
                 //moving the knight 
@@ -64,11 +74,46 @@ public class KnightBehavior : MonoBehaviour
             break;
             case eState.kChase:
             {
-            
+
+                anim.SetFloat("Speed", 0, 0.1f, Time.deltaTime);
+                knightDistance = Vector2.Distance(transform.position, Player.position);
+                Debug.Log("Chasing Player now");
+                //if the player is int between the barrier to be chased (in range)
+                if(Player.position.x < chaseNCoordX || Player.position.x > chasePCoordX){
+                    Debug.Log("Ignoring player");
+                    m_nState = eState.kPatrol;
+                    moveSpeed = 1f;
+                }
+                //check if the player is close enough for attack range 
+                if(knightDistance <= attackDistance){
+                    m_nState = eState.kAttack;
+                }
+                //chase the player so we are moving towards the player
+                moveDirection = (Player.position - transform.position);
+                moveDirection = new Vector2(moveDirection.x, transform.position.y);
+                //also check the movement direction so we can flip the sprite
+                if(moveDirection.x > 0){
+                    knightSprite.flipX = true;
+                }
+                else if(moveDirection.x < 0){
+                    knightSprite.flipX = false;
+                }
+                //moving the knight 
+                transform.Translate(moveDirection * moveSpeed * Time.deltaTime);
+
+                
             }
             break;
             case eState.kAttack:
             {
+                
+                knightDistance = Vector2.Distance(transform.position, Player.position);
+                if(knightDistance > attackDistance){
+                    m_nState = eState.kChase;
+                }
+                Debug.Log("Attacking Now");
+                anim.SetFloat("Speed", 1f, 0.1f, Time.deltaTime);
+            
 
             }
             break;

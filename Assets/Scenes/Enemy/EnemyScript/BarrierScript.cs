@@ -23,11 +23,11 @@ public class BarrierScript : MonoBehaviour
         if(other.gameObject.name == "KnightEnemy"){
             Debug.Log("Knight has hit patrol area");
             //make the enemy knight the opposite direction once it has hit the barrier limit
-            if(knight.moveDirection == Vector2.left){
+            if(knight.moveDirection.x < 0){
                 knight.moveDirection = Vector2.right;
             }
 
-            else if(knight.moveDirection == Vector2.right){
+            else if(knight.moveDirection.x > 0){
                 knight.moveDirection = Vector2.left;
             }
 
