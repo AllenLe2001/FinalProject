@@ -19,6 +19,7 @@ public class BarrierScript : MonoBehaviour
         
     }
 
+
     private void OnTriggerEnter2D(Collider2D other){
         if(other.gameObject.name == "KnightEnemy"){
             Debug.Log("Knight has hit patrol area");

@@ -31,6 +31,7 @@ public class KnightBehavior : MonoBehaviour
     public float chaseNCoordX;
     public float chaseDistance = 2f;
     public float playerXcoord;
+    public bool isAttacking;
     // intital movement for the enemy (this is -1 Left 1 is right)
     public Vector2 moveDirection;
 
@@ -110,7 +111,9 @@ public class KnightBehavior : MonoBehaviour
                 knightDistance = Vector2.Distance(transform.position, Player.position);
                 if(knightDistance > attackDistance){
                     m_nState = eState.kChase;
+                    isAttacking = false;
                 }
+                isAttacking = true;
                 Debug.Log("Attacking Now");
                 anim.SetFloat("Speed", 1f, 0.1f, Time.deltaTime);
             
