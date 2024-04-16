@@ -10,6 +10,7 @@ public class KnightBehavior : MonoBehaviour
     public Transform PatrolBoundary1;
     public Transform PatrolBoundary2;
     public SpriteRenderer knightSprite;
+    public GameObject knightObject;
     private Animator anim;
 
     //The knight has 3 states
@@ -32,6 +33,8 @@ public class KnightBehavior : MonoBehaviour
     public float chaseDistance = 2f;
     public float playerXcoord;
     public bool isAttacking;
+    public bool isDead;
+    public float timer = 0f;
     // intital movement for the enemy (this is -1 Left 1 is right)
     public Vector2 moveDirection;
 
@@ -49,12 +52,16 @@ public class KnightBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(isDead){
+            m_nState = eState.kDie;
+        }
         playerXcoord = Player.position.x;
         //different states of the knight enemy
         switch (m_nState)
         {
             case eState.kPatrol:
             {
+                isAttacking = false;
                 knightDistance = Vector2.Distance(transform.position, Player.position);
                 //check if the distance from player and knight is close enough
                 //if it is then we set to chase state
@@ -75,7 +82,7 @@ public class KnightBehavior : MonoBehaviour
             break;
             case eState.kChase:
             {
-
+                isAttacking = false;
                 anim.SetFloat("Speed", 0, 0.1f, Time.deltaTime);
                 knightDistance = Vector2.Distance(transform.position, Player.position);
                 Debug.Log("Chasing Player now");
@@ -115,14 +122,21 @@ public class KnightBehavior : MonoBehaviour
                 }
                 isAttacking = true;
                 Debug.Log("Attacking Now");
-                anim.SetFloat("Speed", 1f, 0.1f, Time.deltaTime);
+                anim.SetFloat("Speed", 0.5f, 0.1f, Time.deltaTime);
             
 
             }
             break;
             case eState.kDie:
             {
-
+                float deathFrameDuration = 0.5f;
+                timer += Time.deltaTime;
+                anim.SetFloat("Speed", 1f, 0.1f, Time.deltaTime);
+                if(timer >= deathFrameDuration){
+                    //here we shut off the whole gameobject
+                    knightObject.SetActive(false);
+                }
+                
             }
             break;
         }
