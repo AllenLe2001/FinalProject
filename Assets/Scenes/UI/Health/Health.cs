@@ -20,6 +20,6 @@ public class Health : MonoBehaviour
     void UpdateHealth(int hp)
     {
         string currentHealth = string.Format("{0:N0}", hp);
-        display.text = "Health: "+currentHealth;
+        display.text = "X "+currentHealth;
     }
 }
