@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] private float FastJumpMultiplier = 0.25f; 	// Fast movement state
 	[SerializeField] private float JumpMoveMultiplier = 0.5f; 	// Better jump state
 	[SerializeField] private float JumpJumpMultiplier = 5.0f; 	// Better jump state
+	[SerializeField] private Animator anim; // reference to animator
 	
 	// These values change according to player input/movement
 	public eState PlayerState = eState.kDefault;
@@ -64,6 +65,15 @@ public class PlayerController : MonoBehaviour
 			case (eState.kDefault):
 			{
 				//NewHorizontalVelocity *= MoveForce; // no
+				//for now have this here
+				if(horizontalInput == 0f){
+					//idle state animation 
+					anim.SetFloat("Speed", 0, 0.1f, Time.deltaTime);
+				}
+				else if(horizontalInput != 0f){
+					//animation for moving
+					anim.SetFloat("Speed", 1, 0.1f, Time.deltaTime);
+				}
 			}
 			break;
 			
