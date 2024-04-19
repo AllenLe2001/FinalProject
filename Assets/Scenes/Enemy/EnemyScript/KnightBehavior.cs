@@ -35,8 +35,8 @@ public class KnightBehavior : MonoBehaviour
     public bool isAttacking;
     public bool isDead;
     public float timer = 0f;
-    // intital movement for the enemy (this is -1 Left 1 is right)
     public Vector2 moveDirection;
+    public Vector2 chaseDirection;
 
     //internal variables
     public eState m_nState;
@@ -97,17 +97,17 @@ public class KnightBehavior : MonoBehaviour
                     m_nState = eState.kAttack;
                 }
                 //chase the player so we are moving towards the player
-                moveDirection = (Player.position - transform.position);
-                moveDirection = new Vector2(moveDirection.x, transform.position.y);
+                chaseDirection = (Player.position - transform.position);
+                chaseDirection = new Vector2(chaseDirection.x, transform.position.y);
                 //also check the movement direction so we can flip the sprite
-                if(moveDirection.x > 0){
+                if(chaseDirection.x > 0){
                     knightSprite.flipX = true;
                 }
-                else if(moveDirection.x < 0){
+                else if(chaseDirection.x < 0){
                     knightSprite.flipX = false;
                 }
                 //moving the knight 
-                transform.Translate(moveDirection * moveSpeed * Time.deltaTime);
+                transform.Translate(chaseDirection * moveSpeed * Time.deltaTime);
 
                 
             }
