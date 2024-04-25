@@ -869,6 +869,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9003827905559065476, guid: 57ee9dbd4c5f3c346bf73a711535e8f6, type: 3}
+      propertyPath: m_Size.x
+      value: 2.1084888
+      objectReference: {fileID: 0}
+    - target: {fileID: 9003827905559065476, guid: 57ee9dbd4c5f3c346bf73a711535e8f6, type: 3}
+      propertyPath: m_Size.y
+      value: 3.4930348
+      objectReference: {fileID: 0}
+    - target: {fileID: 9003827905559065476, guid: 57ee9dbd4c5f3c346bf73a711535e8f6, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.5542444
+      objectReference: {fileID: 0}
+    - target: {fileID: 9003827905559065476, guid: 57ee9dbd4c5f3c346bf73a711535e8f6, type: 3}
+      propertyPath: m_Offset.y
+      value: 2.6493175
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -36724,6 +36740,10 @@ PrefabInstance:
       propertyPath: PatrolBoundary2
       value: 
       objectReference: {fileID: 879922336}
+    - target: {fileID: 7375100523739797195, guid: 0c52ac54db2038c4b8a4e91b3133df25, type: 3}
+      propertyPath: m_Mass
+      value: 1000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
