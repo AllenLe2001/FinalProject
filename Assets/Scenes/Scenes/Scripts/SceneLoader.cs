@@ -10,6 +10,7 @@ public class SceneLoader : MonoBehaviour
     public int scene = 2;
     public float SplashDelay = 3f;
     private float delay = 0f;
+    private int sceneCount = 2;
     public enum eState : int
     {
         SceneStart,
@@ -29,13 +30,14 @@ public class SceneLoader : MonoBehaviour
         switch (m_nState)
         {
             case eState.SceneStart:
+                scene = sceneCount-1;
                 SceneManager.LoadSceneAsync(1,LoadSceneMode.Single);
                 m_nState = eState.SceneLive;
                 break;
             case eState.SceneLive:
                 if(Time.time > delay)
                 {
-                    SceneManager.LoadSceneAsync(scene, LoadSceneMode.Single);
+                    SceneManager.LoadSceneAsync(sceneCount, LoadSceneMode.Single);
                     m_nState = eState.SceneIdle;
                 }
                 
