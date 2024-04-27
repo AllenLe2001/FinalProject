@@ -518,7 +518,7 @@ PrefabInstance:
     - target: {fileID: 2914950188663364833, guid: e3ac7c97f358f7240b703161a679c85b, type: 3}
       propertyPath: knight
       value: 
-      objectReference: {fileID: 1401690497}
+      objectReference: {fileID: 0}
     - target: {fileID: 4736998982293686367, guid: e3ac7c97f358f7240b703161a679c85b, type: 3}
       propertyPath: m_Name
       value: patrolBarrier2
@@ -652,11 +652,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!4 &879922336 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5616373508582751814, guid: e3ac7c97f358f7240b703161a679c85b, type: 3}
-  m_PrefabInstance: {fileID: 732542625}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &901124979
 GameObject:
   m_ObjectHideFlags: 0
@@ -795,6 +790,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2784406867133209514, guid: 82bec7b3546437e43ad7561e4a786f68, type: 3}
+      propertyPath: MoveScale
+      value: 1000
+      objectReference: {fileID: 0}
     - target: {fileID: 4664621212527356068, guid: 82bec7b3546437e43ad7561e4a786f68, type: 3}
       propertyPath: m_LocalPosition.x
       value: -56.88004
@@ -859,7 +858,7 @@ PrefabInstance:
     - target: {fileID: 4124680313137892350, guid: 57ee9dbd4c5f3c346bf73a711535e8f6, type: 3}
       propertyPath: knight
       value: 
-      objectReference: {fileID: 1401690497}
+      objectReference: {fileID: 0}
     - target: {fileID: 5796166402180644924, guid: 57ee9dbd4c5f3c346bf73a711535e8f6, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.54
@@ -1005,22 +1004,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!4 &1376270351 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5796166402180644924, guid: 57ee9dbd4c5f3c346bf73a711535e8f6, type: 3}
-  m_PrefabInstance: {fileID: 1269105348}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1401690497 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7240239804880584984, guid: 0c52ac54db2038c4b8a4e91b3133df25, type: 3}
-  m_PrefabInstance: {fileID: 2124906750}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45f409a774b960742add97db077bb68a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1474840194
 GameObject:
   m_ObjectHideFlags: 0
@@ -21773,11 +21756,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!4 &1864076695 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4664621212527356068, guid: 82bec7b3546437e43ad7561e4a786f68, type: 3}
-  m_PrefabInstance: {fileID: 1117957726}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1890774271
 GameObject:
   m_ObjectHideFlags: 0
@@ -36707,79 +36685,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!1001 &2124906750
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2217209687624393377, guid: 0c52ac54db2038c4b8a4e91b3133df25, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -4.9899817
-      objectReference: {fileID: 0}
-    - target: {fileID: 2217209687624393377, guid: 0c52ac54db2038c4b8a4e91b3133df25, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1.4882015
-      objectReference: {fileID: 0}
-    - target: {fileID: 2217209687624393377, guid: 0c52ac54db2038c4b8a4e91b3133df25, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.037193093
-      objectReference: {fileID: 0}
-    - target: {fileID: 2217209687624393377, guid: 0c52ac54db2038c4b8a4e91b3133df25, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2217209687624393377, guid: 0c52ac54db2038c4b8a4e91b3133df25, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2217209687624393377, guid: 0c52ac54db2038c4b8a4e91b3133df25, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2217209687624393377, guid: 0c52ac54db2038c4b8a4e91b3133df25, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2217209687624393377, guid: 0c52ac54db2038c4b8a4e91b3133df25, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2217209687624393377, guid: 0c52ac54db2038c4b8a4e91b3133df25, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2217209687624393377, guid: 0c52ac54db2038c4b8a4e91b3133df25, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3588699749496378613, guid: 0c52ac54db2038c4b8a4e91b3133df25, type: 3}
-      propertyPath: m_Name
-      value: Knight
-      objectReference: {fileID: 0}
-    - target: {fileID: 7240239804880584984, guid: 0c52ac54db2038c4b8a4e91b3133df25, type: 3}
-      propertyPath: Player
-      value: 
-      objectReference: {fileID: 1864076695}
-    - target: {fileID: 7240239804880584984, guid: 0c52ac54db2038c4b8a4e91b3133df25, type: 3}
-      propertyPath: PatrolBoundary1
-      value: 
-      objectReference: {fileID: 1376270351}
-    - target: {fileID: 7240239804880584984, guid: 0c52ac54db2038c4b8a4e91b3133df25, type: 3}
-      propertyPath: PatrolBoundary2
-      value: 
-      objectReference: {fileID: 879922336}
-    - target: {fileID: 7375100523739797195, guid: 0c52ac54db2038c4b8a4e91b3133df25, type: 3}
-      propertyPath: m_Mass
-      value: 1000
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 0c52ac54db2038c4b8a4e91b3133df25, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -36792,7 +36697,6 @@ SceneRoots:
   - {fileID: 290764729}
   - {fileID: 1117957726}
   - {fileID: 1508928098}
-  - {fileID: 2124906750}
   - {fileID: 1269105348}
   - {fileID: 732542625}
   - {fileID: 531946522}

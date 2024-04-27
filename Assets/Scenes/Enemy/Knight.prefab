@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &48000240325370653
+--- !u!1 &4601912964960283761
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,9 +8,43 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 36219528736525207}
-  - component: {fileID: 7243036552051165720}
-  - component: {fileID: 7620232992636003924}
+  - component: {fileID: 4743468075456543378}
+  m_Layer: 0
+  m_Name: Knight
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4743468075456543378
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4601912964960283761}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.9899817, y: -1.4882015, z: -0.037193093}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8193929013027483912}
+  - {fileID: 320230882694746788}
+  - {fileID: 4128388759846468309}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6974246914192963904
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4128388759846468309}
+  - component: {fileID: 1818470806066623502}
+  - component: {fileID: 5835890105468464249}
   m_Layer: 0
   m_Name: HeadHitbox
   m_TagString: Untagged
@@ -18,28 +52,28 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &36219528736525207
+--- !u!4 &4128388759846468309
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 48000240325370653}
+  m_GameObject: {fileID: 6974246914192963904}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 12.45, y: 0.05, z: 0.036545835}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2217209687624393377}
+  m_Father: {fileID: 4743468075456543378}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &7243036552051165720
+--- !u!58 &1818470806066623502
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 48000240325370653}
+  m_GameObject: {fileID: 6974246914192963904}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -68,22 +102,22 @@ CircleCollider2D:
   m_Offset: {x: 0.029811114, y: 0.58628756}
   serializedVersion: 2
   m_Radius: 0.4801261
---- !u!114 &7620232992636003924
+--- !u!114 &5835890105468464249
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 48000240325370653}
+  m_GameObject: {fileID: 6974246914192963904}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e5ae89d157e3d6e42bbd010336bd3714, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  knight: {fileID: 7240239804880584984}
-  knightRef: {fileID: 6082074629469668257}
+  knight: {fileID: 4443961312386528392}
+  knightRef: {fileID: 8193929013027483912}
   offset: {x: 0, y: 0, z: 0}
---- !u!1 &3005748320704197471
+--- !u!1 &8695506409682193116
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -91,9 +125,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4553235210008095934}
-  - component: {fileID: 4215298371212408211}
-  - component: {fileID: 5427495214752133996}
+  - component: {fileID: 320230882694746788}
+  - component: {fileID: 1493068858053534166}
+  - component: {fileID: 3783223607916197269}
   m_Layer: 0
   m_Name: attackHitbox
   m_TagString: Untagged
@@ -101,28 +135,28 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4553235210008095934
+--- !u!4 &320230882694746788
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3005748320704197471}
+  m_GameObject: {fileID: 8695506409682193116}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 11.84, y: -0.64, z: 0.0014445893}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2217209687624393377}
+  m_Father: {fileID: 4743468075456543378}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &4215298371212408211
+--- !u!61 &1493068858053534166
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3005748320704197471}
+  m_GameObject: {fileID: 8695506409682193116}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -148,7 +182,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.33019924, y: -0.116969585}
+  m_Offset: {x: 0.44555187, y: -0.116969585}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -159,27 +193,27 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.6603985, y: 0.42940187}
+  m_Size: {x: 3.2119007, y: 0.42940187}
   m_EdgeRadius: 0
---- !u!114 &5427495214752133996
+--- !u!114 &3783223607916197269
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3005748320704197471}
+  m_GameObject: {fileID: 8695506409682193116}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d698c066af7cb0449a78642d26efc13e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  knight: {fileID: 7240239804880584984}
-  knightRef: {fileID: 6082074629469668257}
+  knight: {fileID: 4443961312386528392}
+  knightRef: {fileID: 8193929013027483912}
   offset: {x: 0, y: 0, z: 0}
-  attackHitBox: {fileID: 4215298371212408211}
+  attackHitBox: {fileID: 1493068858053534166}
   Attack: 0
   playerHit: 0
---- !u!1 &3588699749496378613
+--- !u!1 &9064961099819554491
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -187,46 +221,12 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2217209687624393377}
-  m_Layer: 0
-  m_Name: Knight
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2217209687624393377
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3588699749496378613}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.9899817, y: -1.4882015, z: -0.037193093}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 6082074629469668257}
-  - {fileID: 4553235210008095934}
-  - {fileID: 36219528736525207}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &8215655316524062770
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6082074629469668257}
-  - component: {fileID: 6263493342932374053}
-  - component: {fileID: 7240239804880584984}
-  - component: {fileID: 5720895602127635662}
-  - component: {fileID: 7375100523739797195}
-  - component: {fileID: 2189120104706566613}
+  - component: {fileID: 8193929013027483912}
+  - component: {fileID: 4372088802393870841}
+  - component: {fileID: 4443961312386528392}
+  - component: {fileID: 7361763141560565815}
+  - component: {fileID: 8125475479080551041}
+  - component: {fileID: 9099304828737411023}
   m_Layer: 0
   m_Name: KnightEnemy
   m_TagString: Knight
@@ -234,28 +234,28 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6082074629469668257
+--- !u!4 &8193929013027483912
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8215655316524062770}
+  m_GameObject: {fileID: 9064961099819554491}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 12.529982, y: 0.00820148, z: 0.037193093}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2217209687624393377}
+  m_Father: {fileID: 4743468075456543378}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &6263493342932374053
+--- !u!212 &4372088802393870841
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8215655316524062770}
+  m_GameObject: {fileID: 9064961099819554491}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -301,13 +301,13 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7240239804880584984
+--- !u!114 &4443961312386528392
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8215655316524062770}
+  m_GameObject: {fileID: 9064961099819554491}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 45f409a774b960742add97db077bb68a, type: 3}
@@ -316,8 +316,8 @@ MonoBehaviour:
   Player: {fileID: 0}
   PatrolBoundary1: {fileID: 0}
   PatrolBoundary2: {fileID: 0}
-  knightSprite: {fileID: 6263493342932374053}
-  knightObject: {fileID: 3588699749496378613}
+  knightSprite: {fileID: 4372088802393870841}
+  knightObject: {fileID: 4601912964960283761}
   knightDistance: 0
   attackDistance: 1.6
   isInRange: 0
@@ -332,13 +332,13 @@ MonoBehaviour:
   moveDirection: {x: -1, y: 0}
   chaseDirection: {x: 0, y: 0}
   m_nState: 0
---- !u!58 &5720895602127635662
+--- !u!58 &7361763141560565815
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8215655316524062770}
+  m_GameObject: {fileID: 9064961099819554491}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -367,19 +367,19 @@ CircleCollider2D:
   m_Offset: {x: -0.029533625, y: -0.10197145}
   serializedVersion: 2
   m_Radius: 0.49593568
---- !u!50 &7375100523739797195
+--- !u!50 &8125475479080551041
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8215655316524062770}
+  m_GameObject: {fileID: 9064961099819554491}
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 1000
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -393,15 +393,15 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
---- !u!95 &2189120104706566613
+  m_Constraints: 4
+--- !u!95 &9099304828737411023
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8215655316524062770}
+  m_GameObject: {fileID: 9064961099819554491}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 34bad2edef1315d46b3500e01d171c65, type: 2}
