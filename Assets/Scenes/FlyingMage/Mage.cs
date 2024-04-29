@@ -35,6 +35,9 @@ public class Mage : MonoBehaviour
     public Vector2 moveDirection;
     public Vector2 chaseDirection;
     public float yConstrait;
+    public float xConstrait;
+    public float maxXConstrait;
+    public float maxYConstrait;
     public float timer;
     public Transform blastPosition;
     public Transform blastPosition2;
@@ -64,12 +67,13 @@ public class Mage : MonoBehaviour
             case eState.mIdle:
             {
                 anim.SetFloat("Speed", 0 , 0.1f, Time.deltaTime);
-                //if the mage is in the chase range then it goes into chase state
-                if(mageDistance <= chaseDistance){
-                   m_nState = eState.mChase;
-                }
-                else if(mageDistance < stoppingDistance){
+                //if player is too close to the mage, it will try to retreat
+                if(mageDistance < retreatDistance){
                     m_nState = eState.mRetreat;
+                }
+                //if the mage is in the chase range then it goes into chase state
+                else if(mageDistance <= chaseDistance){
+                   m_nState = eState.mChase;
                 }
             }
             break;
@@ -103,25 +107,51 @@ public class Mage : MonoBehaviour
                 else if(chaseDirection.x < 0){
                     mageSprite.flipX = false;
                 }
-                //launches an attack and goes right back to idle
                 anim.SetFloat("Speed", 1, 0.1f, Time.deltaTime);
                 timer += Time.deltaTime;
-                if(timer >= attackSpeed){
+                if(timer >= attackSpeed && !recharge){
                     if(chaseDirection.x > 0){
                     Instantiate(blastPrefab, blastPosition2.position, transform.rotation);
+                    timer = 0f;
+                    recharge = true;
                     }
                     else if(chaseDirection.x < 0){
                     Instantiate(blastPrefab, blastPosition.position, transform.rotation);
-                    }
                     timer = 0f;
-                    m_nState = eState.mIdle;
-                  
+                    recharge = true;
+                    }
+                }
+                else if (recharge){
+                //launches an attack and goes right back to idle
+                     recharge = false;
+                     m_nState = eState.mIdle;
                 }
             }
             break;
 
             case eState.mRetreat:
             {
+                //if the mage is within stopping range we go back to idle
+                if(mageDistance > chaseDistance){
+                    m_nState = eState.mIdle;
+                    timer = 0f;
+                }
+                //retreating state
+                anim.SetFloat("Speed", 0, 0.1f, Time.deltaTime);
+                Vector2 newSpot = transform.position;
+                
+                //if the mage is facing right so we want to go left
+                 if(chaseDirection.x > 0){  
+                    mageSprite.flipX = false;
+                    newSpot = new Vector2(newSpot.x - 4f, newSpot.y);
+
+                 }
+                 else if (chaseDirection.x < 0){
+                    mageSprite.flipX = true;
+                    newSpot = new Vector2(newSpot.x + 4f, newSpot.y);
+                 }
+                newSpot = Vector2.MoveTowards(transform.position, newSpot, moveSpeed * Time.deltaTime);
+                transform.position = new Vector2(newSpot.x, Mathf.Clamp(newSpot.y, yConstrait, 999999f));
             }
             break;
 
