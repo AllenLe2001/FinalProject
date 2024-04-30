@@ -39,6 +39,8 @@ public class Mage : MonoBehaviour
     public float maxXConstrait;
     public float maxYConstrait;
     public float timer;
+    public float teleportTime;
+    public float teleportCharge;
     public Transform blastPosition;
     public Transform blastPosition2;
     //internal variables
@@ -80,6 +82,10 @@ public class Mage : MonoBehaviour
 
             case eState.mChase:
             {
+                //if the player is outside the chase distance then go back to idle
+                if(mageDistance > chaseDistance){
+                    m_nState = eState.mIdle;
+                }
                 //also check the movement direction so we can flip the sprite
                 if(chaseDirection.x > 0){
                     mageSprite.flipX = true;
@@ -107,7 +113,7 @@ public class Mage : MonoBehaviour
                 else if(chaseDirection.x < 0){
                     mageSprite.flipX = false;
                 }
-                anim.SetFloat("Speed", 1, 0.1f, Time.deltaTime);
+                anim.SetFloat("Speed", 0.5f, 0.1f, Time.deltaTime);
                 timer += Time.deltaTime;
                 if(timer >= attackSpeed && !recharge){
                     if(chaseDirection.x > 0){
@@ -136,6 +142,11 @@ public class Mage : MonoBehaviour
                     m_nState = eState.mIdle;
                     timer = 0f;
                 }
+                else if(timer >= teleportTime){
+                    m_nState = eState.mTeleport;
+                    timer = 0f;
+                }
+                timer += Time.deltaTime;
                 //retreating state
                 anim.SetFloat("Speed", 0, 0.1f, Time.deltaTime);
                 Vector2 newSpot = transform.position;
@@ -157,6 +168,27 @@ public class Mage : MonoBehaviour
 
             case eState.mTeleport:
             {
+                anim.SetFloat("Speed", 1, 0.1f, Time.deltaTime);
+                timer += Time.deltaTime;
+                //buffer time before the mage is able to teleport
+                //aka when its most vulnerable
+                if(timer >= teleportCharge){
+                    anim.SetFloat("Speed", 0, 0.1f, Time.deltaTime);
+                    float randomDeterminer = Random.Range(0,1);
+                    float randomXVal = 0;
+
+                    if(randomDeterminer == 0){
+                        randomXVal = -20;
+                    }
+                    else if(randomDeterminer == 1){
+                        randomXVal = 20;
+                    }
+                    
+                    Vector3 randomPosition = transform.position + new Vector3(randomXVal, 0, 0);
+                    transform.position = randomPosition;
+                    timer = 0;
+                    m_nState = eState.mIdle;
+                }
             }
             break;
 
