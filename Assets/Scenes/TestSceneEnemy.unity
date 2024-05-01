@@ -601,6 +601,8 @@ MonoBehaviour:
   maxXConstrait: 0
   maxYConstrait: 0
   timer: 0
+  teleportTime: 6
+  teleportCharge: 0.7
   blastPosition: {fileID: 1690325290}
   blastPosition2: {fileID: 1364485636}
   m_nState: 0
