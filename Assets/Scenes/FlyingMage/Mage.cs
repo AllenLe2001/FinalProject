@@ -41,11 +41,15 @@ public class Mage : MonoBehaviour
     public float timer;
     public float teleportTime;
     public float teleportCharge;
+    public float reviveTime;
     public Transform blastPosition;
     public Transform blastPosition2;
+    public GameObject MageObject;
     //internal variables
     public eState m_nState;
     public bool recharge = false;
+    public bool usedRevive = false;
+    public bool isVulnerable = true;
 
     // Start is called before the first frame update
     void Start()
@@ -82,6 +86,7 @@ public class Mage : MonoBehaviour
 
             case eState.mChase:
             {
+                anim.SetFloat("Speed", 0 , 0.1f, Time.deltaTime);
                 //if the player is outside the chase distance then go back to idle
                 if(mageDistance > chaseDistance){
                     m_nState = eState.mIdle;
@@ -113,7 +118,7 @@ public class Mage : MonoBehaviour
                 else if(chaseDirection.x < 0){
                     mageSprite.flipX = false;
                 }
-                anim.SetFloat("Speed", 0.5f, 0.1f, Time.deltaTime);
+                anim.SetFloat("Speed", 0.25f, 0.1f, Time.deltaTime);
                 timer += Time.deltaTime;
                 if(timer >= attackSpeed && !recharge){
                     if(chaseDirection.x > 0){
@@ -168,7 +173,7 @@ public class Mage : MonoBehaviour
 
             case eState.mTeleport:
             {
-                anim.SetFloat("Speed", 1, 0.1f, Time.deltaTime);
+                anim.SetFloat("Speed", 0.5f, 0.1f, Time.deltaTime);
                 timer += Time.deltaTime;
                 //buffer time before the mage is able to teleport
                 //aka when its most vulnerable
@@ -194,13 +199,49 @@ public class Mage : MonoBehaviour
 
             case eState.mRegen:
             {
+                anim.SetFloat("Speed", 0.75f, 0.1f, Time.deltaTime);
+                timer += Time.deltaTime;
+                //once the animation ends we head right into idle state
+                if(timer >= reviveTime){
+                    timer = 0;
+                    m_nState = eState.mIdle;
+                    isVulnerable = true;
+                }
+
             }
             break;
 
             case eState.mDie:
             {
+              timer += Time.deltaTime;
+              anim.SetFloat("Speed", 1f, 0.1f, Time.deltaTime);  
+              float deathFrameDuration = 2f;
+              if(timer >= deathFrameDuration){
+                    //here we shut off the whole gameobject
+                    MageObject.SetActive(false);
+                }
             }
             break;
         }
     }
+
+
+    private void OnTriggerEnter2D(Collider2D other){
+        //if the mage is touched by player it dies
+            if(other.CompareTag("Player")){
+                //mage has one revive so check if revive has been used yet
+                if(!usedRevive && isVulnerable){
+                    //set the to not Vulenerable so we can't kill during reviving
+                    isVulnerable = false;
+                    usedRevive = true;
+                    m_nState = eState.mRegen;
+                }
+                else if (usedRevive && isVulnerable){
+                    Debug.Log("Player killed mage");
+                    m_nState = eState.mDie;
+                }
+                
+        
+            }
+     }
 }

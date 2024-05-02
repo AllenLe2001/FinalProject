@@ -451,7 +451,7 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.16294718, y: -0.17776036}
@@ -603,10 +603,14 @@ MonoBehaviour:
   timer: 0
   teleportTime: 6
   teleportCharge: 0.7
+  reviveTime: 2.5
   blastPosition: {fileID: 1690325290}
   blastPosition2: {fileID: 1364485636}
+  MageObject: {fileID: 1353624698}
   m_nState: 0
   recharge: 0
+  usedRevive: 0
+  isVulnerable: 1
 --- !u!1 &807954813
 GameObject:
   m_ObjectHideFlags: 0
