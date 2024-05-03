@@ -4,6 +4,6 @@ Enemy Design -
 
 Level Design - 
 
-Player Movement - 
+Player Movement - Mirek Kupczynski Jr
 
 UI - Alex Leon-Zayas
