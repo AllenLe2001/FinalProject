@@ -923,6 +923,7 @@ GameObject:
   - component: {fileID: 1757443576}
   - component: {fileID: 1757443575}
   - component: {fileID: 1757443577}
+  - component: {fileID: 1757443578}
   m_Layer: 0
   m_Name: PrincessBoss
   m_TagString: Untagged
@@ -1080,6 +1081,22 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1757443578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1757443572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0eaa0175fc760fe43a876722cd0e1c1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 474352213}
+  mageSprite: {fileID: 1757443573}
+  bossObject: {fileID: 985044210}
+  m_nState: 0
 --- !u!1 &1890774271
 GameObject:
   m_ObjectHideFlags: 0
