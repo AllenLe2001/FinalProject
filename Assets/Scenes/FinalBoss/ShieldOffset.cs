@@ -11,13 +11,15 @@ public class ShieldOffset : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //find the offset between the boss and the shield
         offset = transform.position - bossRef.position;
+        transform.position = bossRef.position + offset;
+    
     }
 
     // Update is called once per frame
     void Update()
     {
+        offset = transform.position - bossRef.position;
         transform.position = bossRef.position + offset;
     }
 }
