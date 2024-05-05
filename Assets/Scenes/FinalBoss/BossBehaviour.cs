@@ -20,6 +20,7 @@ public class BossBehaviour : MonoBehaviour
     public float phaseNum = 1f;
     public float AttackNum = 1f;
     public float randomTimer;
+    public float randomTimer2;
     public GameObject shield;
 
     public float bossDistance;
@@ -29,12 +30,26 @@ public class BossBehaviour : MonoBehaviour
     public float shieldDuration = 5f;
     public float shieldTimer;
     float randomValue = 99999f;
+    float randomValue2 = 99999f;
     public bool isVulnerable = true;
+    public bool ultUsed = false;
+    public float ultTimer = 0;
+    public float ultRecoveryTime;
+    public float recoverTimer;
+    public bool recoveryFromUlt = false;
+    public bool ultWarning = false;
+    public bool ultSpawned = false;
 
     public BasicBlastBehaviour BasicBlastPrefab;
     public PurpleGuidedAttack PurplePrefab;
     public Transform LaunchOffset;
     public Transform LaunchOffset1;
+    public GameObject ultOffset;
+    public GameObject ultOffset1;
+    public GameObject ultWarner;
+    public GameObject ultWarner1;
+    public PurpleUltAttack ultPrefab;
+
 
      //internal variables
     public eState m_nState;
@@ -140,16 +155,37 @@ public class BossBehaviour : MonoBehaviour
 
             case eState.bAttack:
             {
+                randomTimer2 += Time.deltaTime;
+                //only use this when the ult hasn't been used
+                if(!recoveryFromUlt){
+                if(!ultUsed){
                 AttackNum = Random.Range(1,3);
+                }
                  //also check the movement direction so we can flip the sprite
+                
+                //limit the change in direction of boss when ulting
+                if(!ultUsed){
                 if(chaseDirection.x > 0){
                     bossSprite.flipX = true;
                 }
                 else if(chaseDirection.x < 0){
                     bossSprite.flipX = false;
                 }
+                }
+                if(!ultUsed){
                 timer += Time.deltaTime;
+                }
                 anim.SetFloat("Speed", 0.75f , 0.1f, Time.deltaTime);
+                }
+                else if(recoveryFromUlt){
+                    anim.SetFloat("Speed", 0f , 0.1f, Time.deltaTime);
+                    //if we are recovering ult
+                    recoverTimer += Time.deltaTime;
+                    if(recoverTimer >= 1.5f){
+                        recoveryFromUlt = false;
+                        recoverTimer = 0f;
+                    }
+                }
                 //in phase one the boss will have 3 attacks to use from
                 if(phaseNum == 1){
                     if(timer >= 1.071f){
@@ -157,6 +193,15 @@ public class BossBehaviour : MonoBehaviour
                         timer = 0f;
                     }
                     Debug.Log("We are in phase 1");
+
+                    if(randomTimer2 >= 15f){
+                        randomValue2 = Random.value;
+                         //50 percent chance for boss to use ult in phase 1
+                         if(randomValue2 <= 0.5f){
+                             AttackNum = 3f;
+                             recharge = false;
+                        }
+                    }
                     //basic blast attack
                     if(AttackNum == 1){
                         if(timer >= 0.49f && !recharge){
@@ -181,6 +226,49 @@ public class BossBehaviour : MonoBehaviour
                             Instantiate(PurplePrefab, LaunchOffset1.position, transform.rotation);
                             recharge = true;
                         }
+                        }
+                    }
+                    //big ult attack
+                    else if(AttackNum == 3){
+                        ultTimer += Time.deltaTime;
+                        anim.SetFloat("Speed", 1f , 0.1f, Time.deltaTime);
+                        ultUsed = true;
+                        if(ultTimer >= 0.21 && !ultWarning){
+                            ultWarning = true;
+                            if(!bossSprite.flipX){
+                                ultWarner.SetActive(true);
+                            }
+                            else if(bossSprite.flipX){
+                                ultWarner1.SetActive(true);
+                            }
+                        }
+                        if(ultTimer >= 1.28 && !recharge){
+                            if(!ultSpawned){
+                            Debug.Log("This case is hit to deactivate the setActive");
+                            if(!bossSprite.flipX){
+                                ultWarner.SetActive(false);
+                                ultSpawned = true;
+                                ultOffset.SetActive(true);
+                            }
+                            else if(bossSprite.flipX){
+                                ultSpawned = true;
+                                ultWarner1.SetActive(false);
+                                ultOffset1.SetActive(true);
+                            }
+                            }
+                            //launch the crazy beam attack
+                            recharge = true;
+                        }
+                        else if(ultTimer >= 1.92 && recharge){
+                            ultOffset.SetActive(false);
+                            ultOffset1.SetActive(false);
+                            ultSpawned = false;
+                            ultWarning = false;
+                            ultUsed = false;
+                            ultTimer = 0;
+                            AttackNum = 0f;
+                            recoveryFromUlt = true;
+                            randomTimer2 = 0;
                         }
                     }
                 }

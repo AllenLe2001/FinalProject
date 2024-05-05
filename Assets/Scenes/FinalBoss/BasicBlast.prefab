@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -4338609379892226315}
   m_Layer: 0
   m_Name: BasicBlast
-  m_TagString: Untagged
+  m_TagString: enemyAttack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74,6 +74,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5857f63dd8ae0294bb946cec6222277f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boss: {fileID: 0}
+  bossRef: {fileID: 0}
   Speed: 30
 --- !u!58 &-4338609379892226315
 CircleCollider2D:

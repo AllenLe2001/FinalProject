@@ -28,6 +28,8 @@ public class BasicBlastBehaviour : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log("Collided with OBJ");
+        if(!other.CompareTag("enemyAttack")){
         Destroy(gameObject);
+        }
     }
 }
