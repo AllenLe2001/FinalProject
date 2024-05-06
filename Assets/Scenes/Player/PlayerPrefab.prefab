@@ -1,5 +1,67 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1791892842878014074
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2545177134980149101}
+  m_Layer: 0
+  m_Name: BottomHitboxPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2545177134980149101
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1791892842878014074}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.35, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 533471605784619289}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4727652092009995308
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4740623561280539030}
+  m_Layer: 0
+  m_Name: FrontHitboxPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4740623561280539030
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4727652092009995308}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.2, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 533471605784619289}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5582885446857000858
 GameObject:
   m_ObjectHideFlags: 0
@@ -44,7 +106,6 @@ GameObject:
   - component: {fileID: 1711217448546675666}
   - component: {fileID: 5180813597157908224}
   - component: {fileID: 1654714009780772136}
-  - component: {fileID: 2144242034414536738}
   - component: {fileID: 2784406867133209514}
   - component: {fileID: 285721923804242583}
   m_Layer: 0
@@ -66,7 +127,9 @@ Transform:
   m_LocalPosition: {x: 0.71, y: 0.49, z: 9.915932}
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 2545177134980149101}
+  - {fileID: 4740623561280539030}
   m_Father: {fileID: 4664621212527356068}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1711217448546675666
@@ -171,7 +234,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 2
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -183,18 +246,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &2144242034414536738
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5670095230758115081}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a194a0880087c7344b439927465cdfdc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2784406867133209514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -204,18 +255,42 @@ MonoBehaviour:
   m_GameObject: {fileID: 5670095230758115081}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef2cc7f974a117d40b943d7fad28c11f, type: 3}
+  m_Script: {fileID: 11500000, guid: 99b23385a92ce0943beaecae824c531a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveScale: 50
-  SlowDownScale: 2
-  FloorJumpForce: 15
-  WallJumpForce: 8
+  MaxRunningSpeed: 15
+  RunAcceleration: 5
+  RunDeceleration: 5
+  FallingGravityMult: 1.5
+  TerminalVelocity: 30
+  AccelerationMidair: 0.35
+  DecelerationMidair: 0.65
+  ConserveMomentum: 0
+  DampenMidairVelocity: 1
+  JumpHeight: 4
+  JumpDuration: 0.5
+  JumpCancelGravityMult: 2
+  JumpApexGravityMult: 0
+  JumpApexThreshold: 0
+  JumpApexAccelerationMult: 0
+  JumpApexMaxSpeedMult: 0.5
+  WallJumpForce: {x: 6, y: 8}
+  WallJumpPenalty: 0
+  WallJumpDuration: 0
+  TurnOnWallJump: 1
+  MoveBufferThreshold: 0.01
+  JumpBufferDuration: 0.1
   FastMoveMultiplier: 2
-  FastJumpMultiplier: 0.25
   JumpMoveMultiplier: 0.5
-  JumpJumpMultiplier: 5
-  PlayerState: 0
+  _environmentLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  _floorTag: Floor
+  _wallTag: Wall
+  _floorCheckPoint: {fileID: 2545177134980149101}
+  _floorCheckSize: {x: 0.49, y: 0.03}
+  _wallCheckPoint: {fileID: 4740623561280539030}
+  _wallCheckSize: {x: 0.5, y: 1}
 --- !u!95 &285721923804242583
 Animator:
   serializedVersion: 5
