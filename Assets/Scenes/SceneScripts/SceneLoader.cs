@@ -32,12 +32,14 @@ public class SceneLoader : MonoBehaviour
             case eState.SceneStart:
                 scene = sceneCount-1;
                 SceneManager.LoadSceneAsync(1,LoadSceneMode.Single);
+                delay = Time.time + SplashDelay;
                 m_nState = eState.SceneLive;
                 break;
             case eState.SceneLive:
                 if(Time.time > delay)
                 {
                     SceneManager.LoadSceneAsync(sceneCount, LoadSceneMode.Single);
+                    sceneCount += 1;
                     m_nState = eState.SceneIdle;
                 }
                 

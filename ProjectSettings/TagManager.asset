@@ -9,6 +9,7 @@ TagManager:
   - Floor
   - Wall
   - enemyAttack
+  - inactive
   layers:
   - Default
   - TransparentFX
@@ -28,7 +29,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - Player
   - 
   - 
   - 
