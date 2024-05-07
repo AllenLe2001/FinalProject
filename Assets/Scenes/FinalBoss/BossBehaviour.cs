@@ -39,6 +39,9 @@ public class BossBehaviour : MonoBehaviour
     public bool recoveryFromUlt = false;
     public bool ultWarning = false;
     public bool ultSpawned = false;
+    public bool usedRevive = false;
+    public float reviveTimer = 0;
+
 
     public BasicBlastBehaviour BasicBlastPrefab;
     public PurpleGuidedAttack PurplePrefab;
@@ -49,6 +52,7 @@ public class BossBehaviour : MonoBehaviour
     public GameObject ultWarner;
     public GameObject ultWarner1;
     public PurpleUltAttack ultPrefab;
+    public Mage MagePrefab;
 
 
      //internal variables
@@ -60,7 +64,7 @@ public class BossBehaviour : MonoBehaviour
        bIdle,
        bAttack,
        bChase,
-       bSpawn,
+       bRevive,
        bDie,
 
     }
@@ -86,16 +90,26 @@ public class BossBehaviour : MonoBehaviour
         }
         shieldTimer += Time.deltaTime;
         
+        if(phaseNum == 1){
         //30 percent chance for shield to be on and invulnerable state
         if(randomValue <= 0.3f && isVulnerable){
             shield.SetActive(true);
             isVulnerable = false;
+        }
+        }
+        else if(phaseNum == 2){
+            //90 percent chance for shield to be on and invulnerable state
+        if(randomValue <= 0.9f && isVulnerable){
+            shield.SetActive(true);
+            isVulnerable = false;
+        }
         }
         //after shield duration is over back to being vulnerable
         if(shieldTimer >= shieldDuration){
             shield.SetActive(false);
             isVulnerable = true;
             shieldTimer = 0f;
+            randomValue = 9999f; //reset the value
         }
 
         //chase the player so we are moving towards the player
@@ -117,6 +131,7 @@ public class BossBehaviour : MonoBehaviour
         {
              case eState.bIdle:
             {
+                anim.SetFloat("Speed", 0f , 0.1f, Time.deltaTime); 
                 if(bossDistance <= chaseDistance){
                     m_nState = eState.bChase;
                 }
@@ -128,7 +143,7 @@ public class BossBehaviour : MonoBehaviour
             {
                 //if we are moving set the moving animation else we just set to idle
                 if(isMoving){
-                anim.SetFloat("Speed", 0.25f , 0.1f, Time.deltaTime);
+                anim.SetFloat("Speed", 0.2f , 0.1f, Time.deltaTime);
                 }
                 else if(!isMoving){
                 anim.SetFloat("Speed", 0f , 0.1f, Time.deltaTime);  
@@ -155,6 +170,8 @@ public class BossBehaviour : MonoBehaviour
 
             case eState.bAttack:
             {
+                //the boss has to be in range
+                if(bossDistance <= stoppingDistance){
                 randomTimer2 += Time.deltaTime;
                 //only use this when the ult hasn't been used
                 if(!recoveryFromUlt){
@@ -175,7 +192,7 @@ public class BossBehaviour : MonoBehaviour
                 if(!ultUsed){
                 timer += Time.deltaTime;
                 }
-                anim.SetFloat("Speed", 0.75f , 0.1f, Time.deltaTime);
+                anim.SetFloat("Speed", 0.6f , 0.1f, Time.deltaTime);
                 }
                 else if(recoveryFromUlt){
                     anim.SetFloat("Speed", 0f , 0.1f, Time.deltaTime);
@@ -187,7 +204,6 @@ public class BossBehaviour : MonoBehaviour
                     }
                 }
                 //in phase one the boss will have 3 attacks to use from
-                if(phaseNum == 1){
                     if(timer >= 1.071f){
                         recharge = false;
                         timer = 0f;
@@ -231,7 +247,7 @@ public class BossBehaviour : MonoBehaviour
                     //big ult attack
                     else if(AttackNum == 3){
                         ultTimer += Time.deltaTime;
-                        anim.SetFloat("Speed", 1f , 0.1f, Time.deltaTime);
+                        anim.SetFloat("Speed", 0.8f , 0.1f, Time.deltaTime);
                         ultUsed = true;
                         if(ultTimer >= 0.21 && !ultWarning){
                             ultWarning = true;
@@ -244,7 +260,6 @@ public class BossBehaviour : MonoBehaviour
                         }
                         if(ultTimer >= 1.28 && !recharge){
                             if(!ultSpawned){
-                            Debug.Log("This case is hit to deactivate the setActive");
                             if(!bossSprite.flipX){
                                 ultWarner.SetActive(false);
                                 ultSpawned = true;
@@ -270,24 +285,54 @@ public class BossBehaviour : MonoBehaviour
                             recoveryFromUlt = true;
                             randomTimer2 = 0;
                         }
-                    }
+                }
+                }
+                else if (bossDistance > stoppingDistance){
+                    m_nState = eState.bIdle;
+                }
+            }
+            break;
+            case eState.bRevive:
+            {
+                anim.SetFloat("Speed", 0.4f , 0.1f, Time.deltaTime);
+                reviveTimer += Time.deltaTime;
+                if(reviveTimer >= 5f){
+                isVulnerable = true;
+                m_nState = eState.bIdle;
+                phaseNum = 2;
                 }
             }
             break;
 
-            case eState.bSpawn:
-            {
-            }
-            break;
 
             case eState.bDie:
             {
+                anim.SetFloat("Speed", 0.4f , 0.1f, Time.deltaTime);
+                Debug.Log("Boss has been defeated");
             }
             break;
 
-
         }
-
-        
     }
+
+    private void OnTriggerEnter2D(Collider2D other){
+        //if the mage is touched by player it dies
+            if(other.CompareTag("Wrench")){
+                //mage has one revive so check if revive has been used yet
+                if(!usedRevive && isVulnerable){
+                    //set the to not Vulenerable so we can't kill during reviving
+                    isVulnerable = false;
+                    usedRevive = true;
+                    m_nState = eState.bRevive;
+                    Debug.Log("Revive Used");
+                }
+                else if (usedRevive && isVulnerable){
+                    Debug.Log("Player killed boss");
+                    m_nState = eState.bDie;
+                }
+                
+        
+            }
+     }
+        
 }

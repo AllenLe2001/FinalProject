@@ -9,6 +9,7 @@ TagManager:
   - Floor
   - Wall
   - enemyAttack
+  - Wrench
   layers:
   - Default
   - TransparentFX
@@ -16,7 +17,7 @@ TagManager:
   - Floor
   - Water
   - UI
-  - 
+  - Environment
   - 
   - 
   - 

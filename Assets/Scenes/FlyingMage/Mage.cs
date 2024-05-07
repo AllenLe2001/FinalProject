@@ -8,6 +8,7 @@ public class Mage : MonoBehaviour
     //References 
     //reference to player to get their position
     public Transform Player; 
+    public GameObject PlayerObject;
     public SpriteRenderer mageSprite;
     public GameObject mageObject;
     private Animator anim;
@@ -55,6 +56,8 @@ public class Mage : MonoBehaviour
     void Start()
     {
          //initialize the enemy state to idle
+        PlayerObject= GameObject.FindGameObjectWithTag("Player");
+        Player = PlayerObject.transform;
         m_nState = eState.mIdle;
         mageSprite = GetComponent<SpriteRenderer>();
         anim = GetComponentInChildren<Animator>();

@@ -11,15 +11,13 @@ public class ShieldOffset : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        offset = transform.position - bossRef.position;
-        transform.position = bossRef.position + offset;
-    
+      offset = transform.position - bossRef.position;
+      
     }
 
     // Update is called once per frame
     void Update()
     {
-        offset = transform.position - bossRef.position;
         transform.position = bossRef.position + offset;
     }
 }

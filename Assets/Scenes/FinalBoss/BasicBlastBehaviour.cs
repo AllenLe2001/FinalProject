@@ -6,7 +6,8 @@ public class BasicBlastBehaviour : MonoBehaviour
 {
     public BossBehaviour boss;
     public GameObject bossRef;
-    public float Speed = 30;
+    public float Speed = 20;
+    public float Timer = 0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,19 +18,24 @@ public class BasicBlastBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Timer += Time.deltaTime;
         if(boss.chaseDirection.x < 0){
         transform.position += -transform.right * Time.deltaTime * Speed;
         }
         else if(boss.chaseDirection.x > 0){
         transform.position += transform.right * Time.deltaTime * Speed;
         }
+        //destroy the laser after a certain time
+        if(Timer >=  5f){
+            Destroy(gameObject);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Collided with OBJ");
-        if(!other.CompareTag("enemyAttack")){
-        Destroy(gameObject);
+        if(other.CompareTag("Player")){
+         Debug.Log("Player was hit");
+         Destroy(gameObject);
         }
     }
 }

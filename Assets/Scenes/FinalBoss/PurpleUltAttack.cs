@@ -13,14 +13,12 @@ public class PurpleUltAttack : MonoBehaviour
     {
         //find the offset between the boss and the hitbox
         offset = transform.position - bossRef.position;
-        transform.position = bossRef.position + offset;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        //find the offset between the boss and the hitbox
-        offset = transform.position - bossRef.position;
         transform.position = bossRef.position + offset;
     }
 

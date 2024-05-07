@@ -26,7 +26,7 @@ public class PurpleGuidedAttack : MonoBehaviour
         //calculate direction to player
         Vector2 blastDirect = (player.position - transform.position);
         //apply the force to move towards the target
-        rb.velocity = blastDirect * 1.5f;
+        rb.velocity = blastDirect * 0.85f;
         if(timer >= attackDuration){
         anim.SetFloat("Speed", 1f , 0.1f, Time.deltaTime);
         explosionTimer += Time.deltaTime;
