@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class WrenchHurtbox : MonoBehaviour
 {
+    public AudioSource hitSound;
     public int numBounce=1;
     public PhysicsMaterial2D bounce;
     public PhysicsMaterial2D noBounce;
@@ -61,6 +62,7 @@ public class WrenchHurtbox : MonoBehaviour
     }
     void OnCollisionEnter2D(Collision2D collision)
     {
+        hitSound.Play();
         count++;
         if (numBounce <= count &&hbState == eState.hbActive)
         {

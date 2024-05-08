@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class SceneLoader : MonoBehaviour
 {
     public eState m_nState;
-    public int lives;
+    public int lives = 3;
     public string item;
     public int scene = 2;
     public float SplashDelay = 3f;
@@ -15,7 +15,8 @@ public class SceneLoader : MonoBehaviour
     {
         SceneStart,
         SceneLive,
-        SceneIdle
+        SceneIdle,
+        SceneGameOver
     }
     // Start is called before the first frame update
     void Awake()
@@ -42,17 +43,37 @@ public class SceneLoader : MonoBehaviour
                     sceneCount += 1;
                     m_nState = eState.SceneIdle;
                 }
-                
                 break;
             case eState.SceneIdle:
+                break;
+            case eState.SceneGameOver:
+                SceneManager.LoadSceneAsync(0, LoadSceneMode.Single);
+                lives = 3;
+                m_nState = eState.SceneIdle;
                 break;
             default:
                 break;
         }
     }
+
+    public void died()
+    {
+        sceneCount -= 1;
+        lives -= 1;
+        if(lives < 0)
+        {
+            m_nState = eState.SceneGameOver;
+        }
+        else
+        {
+            m_nState = eState.SceneStart;
+        }
+        
+    }
     public void playGame()
     {
         delay = Time.time + SplashDelay;
         m_nState = eState.SceneStart;
+        
     }
 }
