@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4789689480611936994}
   m_Layer: 18
   m_Name: Allen Wrench
-  m_TagString: Player
+  m_TagString: Wrench
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -109,6 +109,7 @@ GameObject:
   - component: {fileID: 2784406867133209514}
   - component: {fileID: 285721923804242583}
   - component: {fileID: 1893585793856936207}
+  - component: {fileID: 6710578646234332364}
   m_Layer: 18
   m_Name: Player
   m_TagString: Player
@@ -331,3 +332,15 @@ MonoBehaviour:
   wrench: {fileID: 4090593452891780734, guid: cb236e82d82394e4ca32514bfce2a1ea, type: 3}
   Delay: 1
   wrenchState: 0
+--- !u!114 &6710578646234332364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5670095230758115081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f49c6161580776e469121ea744b2c3c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

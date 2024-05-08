@@ -240,7 +240,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -951862013
-  m_SortingLayer: -1
+  m_SortingLayer: 0
   m_SortingOrder: -2
   m_Sprite: {fileID: 21300000, guid: 210ecd64e75f5e44d800575cad598a8f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -455,6 +455,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef2cc7f974a117d40b943d7fad28c11f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MaxRunningSpeed: 15
+  RunAcceleration: 5
+  RunDeceleration: 5
+  FallingGravityMult: 1.5
+  TerminalVelocity: 30
+  AccelerationMidair: 0.35
+  DecelerationMidair: 0.65
+  ConserveMomentum: 0
+  DampenMidairVelocity: 1
+  JumpHeight: 4
+  JumpDuration: 0.5
+  JumpCancelGravityMult: 2
+  JumpApexGravityMult: 0
+  JumpApexThreshold: 0
+  JumpApexAccelerationMult: 0
+  JumpApexMaxSpeedMult: 0.5
+  WallJumpForce: {x: 6, y: 8}
+  WallJumpPenalty: 0
+  WallJumpDuration: 0
+  TurnOnWallJump: 1
+  MoveBufferThreshold: 0.01
+  JumpBufferDuration: 0.1
+  FastMoveMultiplier: 2
+  JumpMoveMultiplier: 0.5
+  _environmentLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  _floorTag: Floor
+  _wallTag: Wall
+  _floorCheckPoint: {fileID: 0}
+  _floorCheckSize: {x: 0.49, y: 0.03}
+  _wallCheckPoint: {fileID: 0}
+  _wallCheckSize: {x: 0.5, y: 1}
 --- !u!114 &474352217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -472,37 +505,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 533471605784619289, guid: 82bec7b3546437e43ad7561e4a786f68, type: 3}
   m_PrefabInstance: {fileID: 1117957726}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &531946521
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 531946522}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &531946522
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 531946521}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.121569, y: 26.916416, z: -0.29255646}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &732542625
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -635,7 +637,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -951862013
-  m_SortingLayer: -1
+  m_SortingLayer: 0
   m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 6239dbb63595e27478e79e958f739bcc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -800,6 +802,10 @@ PrefabInstance:
     - target: {fileID: 2784406867133209514, guid: 82bec7b3546437e43ad7561e4a786f68, type: 3}
       propertyPath: MoveScale
       value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 2784406867133209514, guid: 82bec7b3546437e43ad7561e4a786f68, type: 3}
+      propertyPath: ConserveMomentum
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4664621212527356068, guid: 82bec7b3546437e43ad7561e4a786f68, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1003,7 +1009,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -951862013
-  m_SortingLayer: -1
+  m_SortingLayer: 0
   m_SortingOrder: -3
   m_Sprite: {fileID: 21300000, guid: 4b7451255b63b4f429be276f41ddfd36, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -21927,7 +21933,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: -1
   far clip plane: 1000
   field of view: 60
   orthographic: 1
@@ -36813,4 +36819,3 @@ SceneRoots:
   - {fileID: 1269105348}
   - {fileID: 732542625}
   - {fileID: 1839368333}
-  - {fileID: 531946522}
