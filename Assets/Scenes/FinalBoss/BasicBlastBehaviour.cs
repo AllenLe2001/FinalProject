@@ -8,23 +8,31 @@ public class BasicBlastBehaviour : MonoBehaviour
     public GameObject bossRef;
     public float Speed = 20;
     public float Timer = 0f;
+    public bool isLeft = false;
     // Start is called before the first frame update
     void Start()
     {
        bossRef = GameObject.Find("PrincessBoss");
        boss =  bossRef.GetComponent<BossBehaviour>();
+       if(boss.chaseDirection.x < 0){
+        isLeft = true;
+        }
+        else if(boss.chaseDirection.x > 0){
+        isLeft = false;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        Timer += Time.deltaTime;
-        if(boss.chaseDirection.x < 0){
+
+        if(isLeft){
         transform.position += -transform.right * Time.deltaTime * Speed;
         }
-        else if(boss.chaseDirection.x > 0){
+        else if(!isLeft){
         transform.position += transform.right * Time.deltaTime * Speed;
         }
+        Timer += Time.deltaTime;
         //destroy the laser after a certain time
         if(Timer >=  5f){
             Destroy(gameObject);

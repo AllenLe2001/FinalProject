@@ -53,6 +53,7 @@ public class BossBehaviour : MonoBehaviour
     public GameObject ultWarner1;
     public PurpleUltAttack ultPrefab;
     public Mage MagePrefab;
+    public AudioSource reviveSound;
 
 
      //internal variables
@@ -83,6 +84,7 @@ public class BossBehaviour : MonoBehaviour
     void Update()
     {
         randomTimer += Time.deltaTime;
+        
         //call upon a random float number to determine if boss can go have a shield
         if(randomTimer >= 5f){
             randomValue = Random.value;
@@ -300,6 +302,7 @@ public class BossBehaviour : MonoBehaviour
                 isVulnerable = true;
                 m_nState = eState.bIdle;
                 phaseNum = 2;
+                reviveTimer = 0f;
                 }
             }
             break;
@@ -309,6 +312,10 @@ public class BossBehaviour : MonoBehaviour
             {
                 anim.SetFloat("Speed", 0.4f , 0.1f, Time.deltaTime);
                 Debug.Log("Boss has been defeated");
+                reviveTimer += Time.deltaTime;
+                if(reviveTimer >= 5f){
+                Destroy(gameObject);
+                }
             }
             break;
 
@@ -320,6 +327,7 @@ public class BossBehaviour : MonoBehaviour
             if(other.CompareTag("Wrench")){
                 //mage has one revive so check if revive has been used yet
                 if(!usedRevive && isVulnerable){
+                    reviveSound.Play();
                     //set the to not Vulenerable so we can't kill during reviving
                     isVulnerable = false;
                     usedRevive = true;
@@ -327,6 +335,7 @@ public class BossBehaviour : MonoBehaviour
                     Debug.Log("Revive Used");
                 }
                 else if (usedRevive && isVulnerable){
+                    reviveSound.Play();
                     Debug.Log("Player killed boss");
                     m_nState = eState.bDie;
                 }
