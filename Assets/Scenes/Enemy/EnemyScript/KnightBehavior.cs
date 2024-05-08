@@ -12,6 +12,9 @@ public class KnightBehavior : MonoBehaviour
     public SpriteRenderer knightSprite;
     public GameObject knightObject;
     private Animator anim;
+    public AudioSource knightAttack;
+    public AudioSource knightWalk;
+    public AudioSource knightDieSound;
 
     //The knight has 3 states
     //Patrolling, Chasing, Attacking, and Death
@@ -61,6 +64,7 @@ public class KnightBehavior : MonoBehaviour
         {
             case eState.kPatrol:
             {
+                knightWalk.Play();
                 isAttacking = false;
                 knightDistance = Vector2.Distance(transform.position, Player.position);
                 //check if the distance from player and knight is close enough
@@ -82,6 +86,7 @@ public class KnightBehavior : MonoBehaviour
             break;
             case eState.kChase:
             {
+                knightWalk.Play();
                 isAttacking = false;
                 anim.SetFloat("Speed", 0, 0.1f, Time.deltaTime);
                 knightDistance = Vector2.Distance(transform.position, Player.position);
@@ -121,6 +126,7 @@ public class KnightBehavior : MonoBehaviour
                     isAttacking = false;
                 }
                 isAttacking = true;
+                knightAttack.Play();
                 Debug.Log("Attacking Now");
                 anim.SetFloat("Speed", 0.5f, 0.1f, Time.deltaTime);
             
@@ -129,6 +135,7 @@ public class KnightBehavior : MonoBehaviour
             break;
             case eState.kDie:
             {
+                knightDieSound.Play();
                 float deathFrameDuration = 0.5f;
                 timer += Time.deltaTime;
                 anim.SetFloat("Speed", 1f, 0.1f, Time.deltaTime);
@@ -142,5 +149,14 @@ public class KnightBehavior : MonoBehaviour
         }
 
     }
+
+       private void OnTriggerEnter2D(Collider2D other){
+        //if the knight is attacking and the hitbox collides with the player
+            if(other.CompareTag("Wrench")){
+                Debug.Log("Knight was killed by wrench");
+                isDead = true;
+                //replace this later by referencing players health/life system
+            }
+     }
 
 }

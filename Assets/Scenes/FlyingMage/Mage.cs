@@ -52,6 +52,11 @@ public class Mage : MonoBehaviour
     public bool usedRevive = false;
     public bool isVulnerable = true;
 
+
+    public AudioSource MageTeleport;
+    public AudioSource ReviveSound;
+    public AudioSource MageDeathSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -176,6 +181,7 @@ public class Mage : MonoBehaviour
 
             case eState.mTeleport:
             {
+                MageTeleport.Play();
                 anim.SetFloat("Speed", 0.5f, 0.1f, Time.deltaTime);
                 timer += Time.deltaTime;
                 //buffer time before the mage is able to teleport
@@ -216,6 +222,7 @@ public class Mage : MonoBehaviour
 
             case eState.mDie:
             {
+            MageDeathSound.Play();
               timer += Time.deltaTime;
               anim.SetFloat("Speed", 1f, 0.1f, Time.deltaTime);  
               float deathFrameDuration = 2f;
@@ -231,9 +238,10 @@ public class Mage : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other){
         //if the mage is touched by player it dies
-            if(other.CompareTag("Player")){
+            if(other.CompareTag("Player") || other.CompareTag("Wrench")){
                 //mage has one revive so check if revive has been used yet
                 if(!usedRevive && isVulnerable){
+                    ReviveSound.Play();
                     //set the to not Vulenerable so we can't kill during reviving
                     isVulnerable = false;
                     usedRevive = true;

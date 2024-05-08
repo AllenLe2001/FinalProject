@@ -21726,6 +21726,10 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: 0.72480565
       objectReference: {fileID: 0}
+    - target: {fileID: 4142915604063273153, guid: 0c52ac54db2038c4b8a4e91b3133df25, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4443961312386528392, guid: 0c52ac54db2038c4b8a4e91b3133df25, type: 3}
       propertyPath: Player
       value: 
@@ -21785,6 +21789,10 @@ PrefabInstance:
     - target: {fileID: 4743468075456543378, guid: 0c52ac54db2038c4b8a4e91b3133df25, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9064961099819554491, guid: 0c52ac54db2038c4b8a4e91b3133df25, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
