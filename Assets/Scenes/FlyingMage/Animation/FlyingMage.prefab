@@ -315,8 +315,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
   PlayerObject: {fileID: 0}
-  mageSprite: {fileID: 0}
-  mageObject: {fileID: 0}
+  mageSprite: {fileID: 3467759413001054436}
+  mageObject: {fileID: 6351118319214831193}
   blastPrefab: {fileID: 9013426304802311342, guid: 299ac2dfa8849c0459dc6564b8f04bf0, type: 3}
   attackSpeed: 0.7
   mageDistance: 0
@@ -343,6 +343,7 @@ MonoBehaviour:
   isVulnerable: 1
   MageTeleport: {fileID: 6100963447905930938}
   ReviveSound: {fileID: 6866836413951665277}
+  MageDeathSound: {fileID: 0}
 --- !u!82 &6100963447905930938
 AudioSource:
   m_ObjectHideFlags: 0
