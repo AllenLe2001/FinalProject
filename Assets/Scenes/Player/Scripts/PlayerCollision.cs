@@ -12,7 +12,7 @@ public class PlayerCollision : MonoBehaviour
 	}
 
     // Called whenever a collision happens with another object
-    void OnCollisionEnter2D(Collision2D CollisionInfo)
+    /*void OnCollisionEnter2D(Collision2D CollisionInfo)
     {
 		// TODO: This is a placeholder for an environmental object that harms the player
 		// Similar can be done for when the knight's attack hitbox is collided with
@@ -29,12 +29,12 @@ public class PlayerCollision : MonoBehaviour
 		{
 			ControlScript.SetWallCollision(true);
 		}
-    }
+    }*/
 
     // Called whenever two objects cease collision
     void OnCollisionExit2D(Collision2D CollisionInfo)
     {
-        ControlScript.SetFloorCollision(false);
-		ControlScript.SetWallCollision(false);
+        //ControlScript.SetFloorCollision(false);
+		//ControlScript.SetWallCollision(false);
     }
 }

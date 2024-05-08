@@ -10,7 +10,7 @@ TagManager:
   - Wall
   - enemyAttack
   - Wrench
-
+  - inactive
   layers:
   - Default
   - TransparentFX
@@ -45,9 +45,6 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Background
-    uniqueID: 3343105283
-    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
