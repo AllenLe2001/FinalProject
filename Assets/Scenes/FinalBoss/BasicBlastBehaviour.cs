@@ -6,7 +6,7 @@ public class BasicBlastBehaviour : MonoBehaviour
 {
     public BossBehaviour boss;
     public GameObject bossRef;
-    public float Speed = 20;
+    public float Speed = 5;
     public float Timer = 0f;
     public bool isLeft = false;
     // Start is called before the first frame update
