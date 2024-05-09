@@ -403,6 +403,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerPrefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6710578646234332364, guid: 82bec7b3546437e43ad7561e4a786f68, type: 3}
+      propertyPath: blood
+      value: 
+      objectReference: {fileID: 922036053}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -19375,6 +19379,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eae386590bbf0ff43bf1178a3b9f2dcd, type: 3}
+--- !u!1 &922036053 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5891026522796991909, guid: eae386590bbf0ff43bf1178a3b9f2dcd, type: 3}
+  m_PrefabInstance: {fileID: 922036052}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &934488458 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5616373508582751814, guid: e3ac7c97f358f7240b703161a679c85b, type: 3}
