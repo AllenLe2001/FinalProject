@@ -12,6 +12,7 @@ public class WrenchHurtbox : MonoBehaviour
     private BoxCollider2D[] colliders;
     private int count = 0;
     private float activeTime;
+    private float startTime;
     public enum eState : int
     {
         hbActive,
@@ -22,11 +23,16 @@ public class WrenchHurtbox : MonoBehaviour
     void Start()
     {
         colliders = GetComponents<BoxCollider2D>();
+        startTime = Time.time + 0.5f;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (startTime <= Time.time)
+        {
+            gameObject.layer = 17;
+        }
         switch (hbState)
         {
             case (eState.hbActive):
@@ -48,9 +54,14 @@ public class WrenchHurtbox : MonoBehaviour
 
             case (eState.hbInactive):
                 {
-                    if(activeTime+1.5f <= Time.time)
+                    
+                    if (activeTime+1.5f <= Time.time)
                     {
                         gameObject.tag = "inactive";
+                        //Destroy(gameObject);
+                    }
+                    if (startTime + 6f <= Time.time)
+                    {
                         Destroy(gameObject);
                     }
                 }

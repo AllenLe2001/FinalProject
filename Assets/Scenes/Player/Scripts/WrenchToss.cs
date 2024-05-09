@@ -8,7 +8,7 @@ public class WrenchToss : MonoBehaviour
     public float charge = 0f;
     public float chargeTime = 0.35f;
     public GameObject wrench;
-    public float Delay = 1f;
+    public float Delay = 7f;
     private float activeTime;
     private bool hasWrench = true;
     public eState wrenchState = eState.initToss;
@@ -33,6 +33,12 @@ public class WrenchToss : MonoBehaviour
             case (eState.initToss):
                 {
                     if (Input.GetKey("left shift")&&activeTime<= Time.time)
+                    {
+                        hasWrench = true;
+                        charge = 0f;
+                        wrenchState = eState.chargeToss;
+                    }
+                    else if (Input.GetKey("left shift") && hasWrench)
                     {
                         charge = 0f;
                         wrenchState = eState.chargeToss;
@@ -67,6 +73,7 @@ public class WrenchToss : MonoBehaviour
                     
                     
                     wrenchState = eState.initToss;
+                    hasWrench = false;
                     activeTime = Time.time + Delay;
                 }
                 break;
@@ -80,5 +87,15 @@ public class WrenchToss : MonoBehaviour
             default:
                 break;
         }
+
+    }
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "inactive"|| collision.gameObject.tag == "Wrench")
+        {
+            hasWrench = true;
+            Destroy(collision.gameObject);
+        }
+
     }
 }

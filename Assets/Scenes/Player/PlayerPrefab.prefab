@@ -328,9 +328,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   power: 16
   charge: 0
-  chargeTime: 0.35
+  chargeTime: 0.3
   wrench: {fileID: 4090593452891780734, guid: cb236e82d82394e4ca32514bfce2a1ea, type: 3}
-  Delay: 1
+  Delay: 7
   wrenchState: 0
 --- !u!114 &6710578646234332364
 MonoBehaviour:
