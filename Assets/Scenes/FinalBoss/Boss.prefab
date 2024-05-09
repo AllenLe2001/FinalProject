@@ -780,6 +780,7 @@ MonoBehaviour:
   ultPrefab: {fileID: 2089467041218816328, guid: ec61b8e2590daa54fb2c3118839814bc, type: 3}
   MagePrefab: {fileID: 0}
   reviveSound: {fileID: 97494188924181094}
+  portal: {fileID: 8778109716111420908, guid: bcd168c83f677954eb9839e9803343da, type: 3}
   m_nState: 0
 --- !u!70 &487901146668655942
 CapsuleCollider2D:

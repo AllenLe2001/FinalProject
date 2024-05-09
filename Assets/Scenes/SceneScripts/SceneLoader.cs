@@ -10,6 +10,7 @@ public class SceneLoader : MonoBehaviour
     public float SplashDelay = 3f;  //duration of level splash creen
     private float delay = 0f;       //delay to start next state of sceneloader
     public int sceneCount = 4;     //current scene index found in build setting
+    public bool skipSplash = false;
     public enum eState : int
     {
         SceneStart,
@@ -37,14 +38,28 @@ public class SceneLoader : MonoBehaviour
         switch (m_nState)
         {
             case eState.SceneStart: //loads splash screen and sets level number
-                scene = sceneCount-3;
-                SceneManager.LoadSceneAsync(1,LoadSceneMode.Single);
+                scene = sceneCount - 3;
                 delay = Time.time + SplashDelay;
-                m_nState = eState.SceneLive;
+                if (skipSplash)
+                {
+                    m_nState = eState.SceneLive;
+                }
+                else
+                {
+                    SceneManager.LoadSceneAsync(1, LoadSceneMode.Single);
+                    m_nState = eState.SceneLive;
+                }
+
                 break;
             case eState.SceneLive: //loads level
-
-                if (Time.time > delay || Input.GetKey(KeyCode.Space))
+                if (skipSplash)
+                {
+                    SceneManager.LoadSceneAsync(sceneCount, LoadSceneMode.Single);
+                    skipSplash = false;
+                    m_nState = eState.SceneIdle;
+                    sceneCount += 1;
+                }
+                else if (Time.time > delay || Input.GetKey(KeyCode.Space))
                 {
                     SceneManager.LoadSceneAsync(sceneCount, LoadSceneMode.Single);
                     sceneCount += 1;

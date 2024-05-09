@@ -41,7 +41,7 @@ public class BossBehaviour : MonoBehaviour
     public bool ultSpawned = false;
     public bool usedRevive = false;
     public float reviveTimer = 0;
-
+    private SceneLoader loader;
 
     public BasicBlastBehaviour BasicBlastPrefab;
     public PurpleGuidedAttack PurplePrefab;
@@ -54,7 +54,7 @@ public class BossBehaviour : MonoBehaviour
     public PurpleUltAttack ultPrefab;
     public Mage MagePrefab;
     public AudioSource reviveSound;
-
+    public GameObject portal;
 
      //internal variables
     public eState m_nState;
@@ -78,6 +78,7 @@ public class BossBehaviour : MonoBehaviour
         anim = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody2D>();
         prevPos = transform.position;
+        loader = GameObject.Find("SceneManager").GetComponent<SceneLoader>();
     }
 
     // Update is called once per frame
@@ -313,8 +314,12 @@ public class BossBehaviour : MonoBehaviour
                 anim.SetFloat("Speed", 0.4f , 0.1f, Time.deltaTime);
                 Debug.Log("Boss has been defeated");
                 reviveTimer += Time.deltaTime;
-                if(reviveTimer >= 5f){
-                Destroy(gameObject);
+                if(reviveTimer >= 5f)
+                {
+                    loader.skipSplash = true;
+                    GameObject port = Instantiate(portal);
+                    port.transform.position = new Vector3(32, 27, 0);
+                    Destroy(gameObject);
                 }
             }
             break;
