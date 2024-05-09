@@ -12,9 +12,21 @@ EditorBuildSettings:
     path: Assets/Scenes/SceneScripts/WIP/LevelSplash.unity
     guid: acfbd60b838d39141af71a43d213602a
   - enabled: 1
+    path: Assets/Scenes/GameOver.unity
+    guid: 75b9679e53761694bac722ded62af83f
+  - enabled: 1
+    path: Assets/Scenes/Training.unity
+    guid: accef9ce0ad72f942bcc5a03c4239dce
+  - enabled: 1
     path: Assets/Scenes/level1.unity
     guid: 84ef9bb771e2c8c408732a265b81861e
   - enabled: 1
     path: Assets/Scenes/level2.unity
     guid: 9287af73dc7363f48b1710f09b16c73f
+  - enabled: 1
+    path: Assets/Scenes/level3.unity
+    guid: a618160ee3e42e84184ffc44c119c901
+  - enabled: 1
+    path: Assets/Scenes/FinalBoss.unity
+    guid: 4e39b7e750e203e4e960c78c476735a9
   m_configObjects: {}

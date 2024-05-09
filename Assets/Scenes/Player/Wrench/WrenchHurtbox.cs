@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class WrenchHurtbox : MonoBehaviour
 {
-    public AudioSource hitSound;
-    public int numBounce=1;
-    public PhysicsMaterial2D bounce;
-    public PhysicsMaterial2D noBounce;
-    public eState hbState = eState.hbActive;
-    private BoxCollider2D[] colliders;
-    private int count = 0;
-    private float activeTime;
-    private float startTime;
+    public AudioSource hitSound; //hit sound
+    public int numBounce=1;//number of bounces before tuning down bounciness
+    public PhysicsMaterial2D bounce; //bouncy material
+    public PhysicsMaterial2D noBounce; //non bouncy material
+    public eState hbState = eState.hbActive; //current wrench state
+    private BoxCollider2D[] colliders; //list of colliders
+    private int count = 0; //number of bounces so far
+    private float activeTime; //timestamp of first bounce, used to determine active hitbox
+    private float startTime; //timestamp of start of initialization
     public enum eState : int
     {
         hbActive,
@@ -29,19 +29,19 @@ public class WrenchHurtbox : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (startTime <= Time.time)
+        if (startTime <= Time.time) //changes layer to avoid collision at start
         {
             gameObject.layer = 17;
         }
         switch (hbState)
         {
-            case (eState.hbActive):
+            case (eState.hbActive): //curently active
                 {
 
                 }
                 break;
 
-            case (eState.hbBounce):
+            case (eState.hbBounce): //counts bounces
                 {
                     foreach(BoxCollider2D body in colliders)
                     {
@@ -52,7 +52,7 @@ public class WrenchHurtbox : MonoBehaviour
                 }
                 break;
 
-            case (eState.hbInactive):
+            case (eState.hbInactive): //disables hurtbox against enemies
                 {
                     
                     if (activeTime+1.5f <= Time.time)
@@ -71,11 +71,11 @@ public class WrenchHurtbox : MonoBehaviour
                 break;
         }
     }
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnCollisionEnter2D(Collision2D collision) 
     {
         hitSound.Play();
         count++;
-        if (numBounce <= count &&hbState == eState.hbActive)
+        if (numBounce <= count &&hbState == eState.hbActive)//changes material after set number of bounces
         {
             hbState = eState.hbBounce;
             count = 0;

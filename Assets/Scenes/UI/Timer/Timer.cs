@@ -5,8 +5,9 @@ using TMPro;
 
 public class Timer : MonoBehaviour
 {
-    public eState m_nState;
-    public float time = 300f;
+    public eState m_nState; //current timer state
+    public float time = 90f; //total time of timer
+    public float criticalTime = 30f; //at what second should timer turn red
     public TextMeshProUGUI display;
     public enum eState : int
     {
@@ -25,27 +26,27 @@ public class Timer : MonoBehaviour
     {
         switch (m_nState)
         {
-            case eState.timerStart:
+            case eState.timerStart://starts
                 if (true)
                 {
                     m_nState = eState.timerCount;
                 }
                 break;
-            case eState.timerCount:
+            case eState.timerCount: //timer is counting down
                 display.faceColor = Color.white;
                 time -= Time.deltaTime;
                 UpdateTimerDisplay(time);
-                if (Mathf.FloorToInt(time) < 60f)
+                if (Mathf.FloorToInt(time) < criticalTime) //next state when timer is low
                 {
                     m_nState = eState.timerCrit;
                 }
                 break;
-            case eState.timerCrit:
+            case eState.timerCrit://changes timer color
                 display.faceColor = Color.red;
                 Flash();
                 time -= Time.deltaTime;
                 UpdateTimerDisplay(time);
-                if (Mathf.FloorToInt(time) <= 0f)
+                if (Mathf.FloorToInt(time) <= 0f) //stops timer
                 {
                     m_nState = eState.timerStop;
                 }
@@ -56,7 +57,7 @@ public class Timer : MonoBehaviour
                 break;
         }
     }
-    public void UpdateTimerDisplay(float time)
+    public void UpdateTimerDisplay(float time) //displays timer
     {
         float seconds = Mathf.FloorToInt(time);
         //float minutes = Mathf.FloorToInt(time / 60f);

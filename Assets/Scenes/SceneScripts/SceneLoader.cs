@@ -4,19 +4,19 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class SceneLoader : MonoBehaviour
 {
-    public eState m_nState;
-    public int lives = 3;
-    public string item;
-    public int scene = 2;
-    public float SplashDelay = 3f;
-    private float delay = 0f;
-    private int sceneCount = 2;
+    public eState m_nState;  //current state of sceneloader
+    public int lives = 3;   //number of lives the player has
+    public int scene = 2;   //level number to display
+    public float SplashDelay = 3f;  //duration of level splash creen
+    private float delay = 0f;       //delay to start next state of sceneloader
+    private int sceneCount = 4;     //current scene index found in build setting
     public enum eState : int
     {
         SceneStart,
         SceneLive,
         SceneIdle,
-        SceneGameOver
+        SceneGameOver,
+        SceneContinue
     }
     // Start is called before the first frame update
     void Awake()
@@ -30,50 +30,60 @@ public class SceneLoader : MonoBehaviour
     {
         switch (m_nState)
         {
-            case eState.SceneStart:
-                scene = sceneCount-1;
+            case eState.SceneStart: //loads splash screen and sets level number
+                scene = sceneCount-3;
                 SceneManager.LoadSceneAsync(1,LoadSceneMode.Single);
                 delay = Time.time + SplashDelay;
                 m_nState = eState.SceneLive;
                 break;
-            case eState.SceneLive:
-                if(Time.time > delay)
+            case eState.SceneLive: //loads level
+
+                if (Time.time > delay || Input.GetKey(KeyCode.Space))
                 {
                     SceneManager.LoadSceneAsync(sceneCount, LoadSceneMode.Single);
                     sceneCount += 1;
                     m_nState = eState.SceneIdle;
                 }
                 break;
-            case eState.SceneIdle:
+            case eState.SceneIdle: //empty state for when level is being played
                 break;
-            case eState.SceneGameOver:
-                SceneManager.LoadSceneAsync(0, LoadSceneMode.Single);
+            case eState.SceneGameOver: //loads gameover scene
+                SceneManager.LoadSceneAsync(2, LoadSceneMode.Single);
                 lives = 3;
-                m_nState = eState.SceneIdle;
+                delay = Time.time + SplashDelay;
+                m_nState = eState.SceneContinue;
+                break;
+            case eState.SceneContinue:
+                if (Time.time > delay+1f || Input.GetKey(KeyCode.Space))
+                {
+                    SceneManager.LoadSceneAsync(0, LoadSceneMode.Single);
+                    sceneCount = 4;
+                    m_nState = eState.SceneIdle;
+                }
                 break;
             default:
                 break;
         }
     }
 
-    public void died()
+    public void died()  //used in playerhit script to start player death sequence
     {
         sceneCount -= 1;
         lives -= 1;
-        if(lives < 0)
+        if(lives < 0) //if out of lives go to gameover
         {
             m_nState = eState.SceneGameOver;
         }
-        else
+        else //else reload level
         {
             m_nState = eState.SceneStart;
         }
         
     }
-    public void playGame()
+    public void playGame(int index) //for main menu use, loads level selected
     {
+        sceneCount = index;
         delay = Time.time + SplashDelay;
         m_nState = eState.SceneStart;
-        
     }
 }

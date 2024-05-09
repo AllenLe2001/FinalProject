@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class NextLevel : MonoBehaviour
 {
-    private SceneLoader loader;
+    private SceneLoader loader; //scene manager script
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +19,7 @@ public class NextLevel : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Player")
-            loader.m_nState = SceneLoader.eState.SceneStart;
+        if (other.tag == "Player")              //if player collides with portal load next level
+            loader.m_nState = SceneLoader.eState.SceneStart; 
     }
 }

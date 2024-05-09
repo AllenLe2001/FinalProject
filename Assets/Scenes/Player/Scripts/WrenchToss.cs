@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class WrenchToss : MonoBehaviour
 {
-    public float power = 16f;
-    public float charge = 0f;
-    public float chargeTime = 0.35f;
-    public GameObject wrench;
-    public float Delay = 7f;
-    private float activeTime;
-    private bool hasWrench = true;
+    public float power = 16f; //strength of toss
+    private float charge = 0f; //current charge, used to determine high or far toss
+    public float chargeTime = 0.35f; //threshold for high throw
+    public GameObject wrench; //wrench prefab
+    public float Delay = 7f; //wrench respawn timer
+    private float activeTime; //timestamp for respawn
+    private bool hasWrench = true; //bool if player has wrench
     public eState wrenchState = eState.initToss;
     public enum eState : int
     {
@@ -30,7 +30,7 @@ public class WrenchToss : MonoBehaviour
     {
         switch (wrenchState)
         {
-            case (eState.initToss):
+            case (eState.initToss): //check if toss can be initiated
                 {
                     if (Input.GetKey("left shift")&&activeTime<= Time.time)
                     {
@@ -46,18 +46,17 @@ public class WrenchToss : MonoBehaviour
                 }
                 break;
 
-            case (eState.chargeToss):
+            case (eState.chargeToss): //checks for how long player hold button for
                 {
                     charge = Mathf.Clamp(charge + Time.deltaTime * chargeTime, 0f, chargeTime);
                     if(!Input.GetKey("left shift"))
                     {
                         wrenchState = eState.releaseToss;
-                    }
-                    
+                    }                    
                 }
                 break;
 
-            case (eState.releaseToss):
+            case (eState.releaseToss): //spawns wrench and adds initial speed
                 {
                     float dir = transform.localScale.x / Mathf.Abs(transform.localScale.x);
                     GameObject allen = Object.Instantiate(wrench);
@@ -78,7 +77,7 @@ public class WrenchToss : MonoBehaviour
                 }
                 break;
 
-            case (eState.pickupToss):
+            case (eState.pickupToss): //possible animation state
                 {
 
                 }
@@ -91,7 +90,7 @@ public class WrenchToss : MonoBehaviour
     }
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "inactive"|| collision.gameObject.tag == "Wrench")
+        if(collision.gameObject.tag == "inactive"|| collision.gameObject.tag == "Wrench")//if colides with wrench despawns wrench and readies next toss
         {
             hasWrench = true;
             Destroy(collision.gameObject);
