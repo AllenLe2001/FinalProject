@@ -40,6 +40,7 @@ public class KnightBehavior : MonoBehaviour
     public float timer = 0f;
     public Vector2 moveDirection;
     public Vector2 chaseDirection;
+    public float minYVal;
 
     //internal variables
     public eState m_nState;
@@ -113,8 +114,11 @@ public class KnightBehavior : MonoBehaviour
                 }
                 //moving the knight 
                 transform.Translate(chaseDirection * moveSpeed * Time.deltaTime);
+                //clamping the y value 
+                Vector3 currentPos = transform.position;
 
-                
+                currentPos.y = Mathf.Clamp(currentPos.y, minYVal, 9999f);
+                transform.position = currentPos;
             }
             break;
             case eState.kAttack:
