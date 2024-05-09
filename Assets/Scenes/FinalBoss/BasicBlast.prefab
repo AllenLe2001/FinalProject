@@ -77,8 +77,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boss: {fileID: 0}
   bossRef: {fileID: 0}
-  Speed: 30
+  Speed: 35
   Timer: 0
+  isLeft: 0
 --- !u!61 &728111926671729327
 BoxCollider2D:
   m_ObjectHideFlags: 0
