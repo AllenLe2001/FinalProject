@@ -40,6 +40,7 @@ public class KnightBehavior : MonoBehaviour
     public float timer = 0f;
     public Vector2 moveDirection;
     public Vector2 chaseDirection;
+    public float minYVal;
 
     //internal variables
     public eState m_nState;
@@ -113,8 +114,6 @@ public class KnightBehavior : MonoBehaviour
                 }
                 //moving the knight 
                 transform.Translate(chaseDirection * moveSpeed * Time.deltaTime);
-
-                
             }
             break;
             case eState.kAttack:
