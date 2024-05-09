@@ -15,6 +15,7 @@ public class KnightBehavior : MonoBehaviour
     public AudioSource knightAttack;
     public AudioSource knightWalk;
     public AudioSource knightDieSound;
+    public GameObject hitbox;
 
     //The knight has 3 states
     //Patrolling, Chasing, Attacking, and Death
@@ -57,6 +58,7 @@ public class KnightBehavior : MonoBehaviour
     {
         if (isDead)
         {
+            hitbox.SetActive(false);
             m_nState = eState.kDie;
         }
         playerXcoord = Player.position.x;

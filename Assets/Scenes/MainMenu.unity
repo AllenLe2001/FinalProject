@@ -1472,7 +1472,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3645377742139096771, guid: fbc029b0d6cb58943aa77da376cd4238, type: 3}
       propertyPath: m_FontData.m_FontSize
-      value: 25
+      value: 32
       objectReference: {fileID: 0}
     - target: {fileID: 8611625583888475039, guid: fbc029b0d6cb58943aa77da376cd4238, type: 3}
       propertyPath: m_Pivot.x
@@ -1621,11 +1621,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3645377742139096771, guid: fbc029b0d6cb58943aa77da376cd4238, type: 3}
       propertyPath: m_Text
-      value: Level 4
+      value: Boss Level
       objectReference: {fileID: 0}
     - target: {fileID: 3645377742139096771, guid: fbc029b0d6cb58943aa77da376cd4238, type: 3}
       propertyPath: m_FontData.m_FontSize
-      value: 25
+      value: 32
       objectReference: {fileID: 0}
     - target: {fileID: 8611625583888475039, guid: fbc029b0d6cb58943aa77da376cd4238, type: 3}
       propertyPath: m_Pivot.x

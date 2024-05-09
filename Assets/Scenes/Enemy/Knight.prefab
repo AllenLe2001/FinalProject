@@ -338,6 +338,7 @@ MonoBehaviour:
   knightAttack: {fileID: 5582487962515346144}
   knightWalk: {fileID: 3283040900844352911}
   knightDieSound: {fileID: 73411230260894958}
+  hitbox: {fileID: 8695506409682193116}
   knightDistance: 0
   attackDistance: 3
   isInRange: 0

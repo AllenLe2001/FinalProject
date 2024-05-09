@@ -49,9 +49,9 @@ Shader "Unlit/BloodSplatter"
             
             fixed4 frag (v2f i) : SV_Target
             {
-                _Color.a = pow(_SinTime.w,2);
-                if(_Color.a < 0.9){
-                    _Color.a=0.9;
+                _Color.a = pow(sin(_Time.y * 3),2);
+                if(_Color.a < 0.7){
+                    _Color.a=0.7;
                     }
                 fixed4 col = tex2D(_MainTex, i.uv) * _Color;
                 col.a *= _Color.a;

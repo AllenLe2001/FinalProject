@@ -694,11 +694,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7117700401216365549, guid: 7cedab4df6ca8e74c82c19d44c589dab, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7117700401216365549, guid: 7cedab4df6ca8e74c82c19d44c589dab, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7117700401216365549, guid: 7cedab4df6ca8e74c82c19d44c589dab, type: 3}
       propertyPath: m_LocalPosition.x
@@ -30804,7 +30804,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: -1
   far clip plane: 1000
   field of view: 60
   orthographic: 1

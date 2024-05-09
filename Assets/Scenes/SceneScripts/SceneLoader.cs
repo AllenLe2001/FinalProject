@@ -9,7 +9,7 @@ public class SceneLoader : MonoBehaviour
     public int scene = 2;   //level number to display
     public float SplashDelay = 3f;  //duration of level splash creen
     private float delay = 0f;       //delay to start next state of sceneloader
-    private int sceneCount = 4;     //current scene index found in build setting
+    public int sceneCount = 4;     //current scene index found in build setting
     public enum eState : int
     {
         SceneStart,

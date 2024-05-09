@@ -19,5 +19,9 @@ public class Health : MonoBehaviour
     {
 
     }
+    public void RestartLevel()
+    {
+        loader.died();
+    }
 
 }
