@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1804219173276577273}
   m_Layer: 0
   m_Name: SceneManager
-  m_TagString: Untagged
+  m_TagString: scene manager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46,6 +46,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_nState: 2
   lives: 3
-  item: 
   scene: 2
   SplashDelay: 3

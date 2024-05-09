@@ -96,7 +96,7 @@ public class KnightBehavior : MonoBehaviour
                     knightDistance = Vector2.Distance(transform.position, Player.position);
                     Debug.Log("Chasing Player now");
                     //if the player is int between the barrier to be chased (in range)
-                    if (Player.position.x < chaseNCoordX || Player.position.x > chasePCoordX)
+                    if (knightDistance > chaseDistance)
                     {
                         Debug.Log("Ignoring player");
                         m_nState = eState.kPatrol;
@@ -114,10 +114,12 @@ public class KnightBehavior : MonoBehaviour
                     if (chaseDirection.x > 0)
                     {
                         knightSprite.flipX = true;
+                        moveDirection = Vector2.right;
                     }
                     else if (chaseDirection.x < 0)
                     {
                         knightSprite.flipX = false;
+                        moveDirection = Vector2.left;
                     }
                     //moving the knight 
                     transform.Translate(chaseDirection * moveSpeed * Time.deltaTime);
@@ -151,7 +153,7 @@ public class KnightBehavior : MonoBehaviour
                     if (timer >= deathFrameDuration)
                     {
                         //here we shut off the whole gameobject
-                        knightObject.SetActive(false);
+                        gameObject.SetActive(false);
                     }
 
                 }

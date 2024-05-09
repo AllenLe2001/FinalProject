@@ -11,6 +11,7 @@ TagManager:
   - enemyAttack
   - Wrench
   - inactive
+  - scene manager
   layers:
   - Default
   - TransparentFX
@@ -31,7 +32,7 @@ TagManager:
   - 
   - Wrench
   - Player
-  - 
+  - NoCollision
   - 
   - 
   - 

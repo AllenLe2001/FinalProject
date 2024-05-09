@@ -9,6 +9,9 @@ public class Timer : MonoBehaviour
     public float time = 90f; //total time of timer
     public float criticalTime = 30f; //at what second should timer turn red
     public TextMeshProUGUI display;
+    public GameObject player;
+    public GameObject killorb;
+    private GameObject playerKiller;
     public enum eState : int
     {
         timerStart,
@@ -19,6 +22,7 @@ public class Timer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
     }
 
     // Update is called once per frame
@@ -49,9 +53,12 @@ public class Timer : MonoBehaviour
                 if (Mathf.FloorToInt(time) <= 0f) //stops timer
                 {
                     m_nState = eState.timerStop;
+                    playerKiller = Instantiate(killorb);
+                    killorb.transform.SetParent(player.transform);
                 }
                 break;
             case eState.timerStop:
+                playerKiller.transform.position = player.transform.GetChild(0).transform.position;
                 break;
             default:
                 break;

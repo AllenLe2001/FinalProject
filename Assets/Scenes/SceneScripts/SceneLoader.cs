@@ -20,7 +20,13 @@ public class SceneLoader : MonoBehaviour
     }
     // Start is called before the first frame update
     void Awake()
-    {
+    {   
+        GameObject[] objs = GameObject.FindGameObjectsWithTag("scene manager");
+
+        if (objs.Length > 1)
+        {
+            Destroy(objs[0]);
+        }
         DontDestroyOnLoad(this.gameObject);
         m_nState = eState.SceneIdle;
     }

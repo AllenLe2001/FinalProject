@@ -13,6 +13,7 @@ public class WrenchHurtbox : MonoBehaviour
     private int count = 0; //number of bounces so far
     private float activeTime; //timestamp of first bounce, used to determine active hitbox
     private float startTime; //timestamp of start of initialization
+    private float soundDelay;
     public enum eState : int
     {
         hbActive,
@@ -31,7 +32,7 @@ public class WrenchHurtbox : MonoBehaviour
     {
         if (startTime <= Time.time) //changes layer to avoid collision at start
         {
-            gameObject.layer = 17;
+            gameObject.layer = 18;
         }
         switch (hbState)
         {
@@ -58,6 +59,7 @@ public class WrenchHurtbox : MonoBehaviour
                     if (activeTime+1.5f <= Time.time)
                     {
                         gameObject.tag = "inactive";
+                        gameObject.layer = 19;
                         //Destroy(gameObject);
                     }
                     if (startTime + 6f <= Time.time)
@@ -73,7 +75,11 @@ public class WrenchHurtbox : MonoBehaviour
     }
     void OnCollisionEnter2D(Collision2D collision) 
     {
-        hitSound.Play();
+        if(soundDelay <= Time.time)
+        {
+            hitSound.Play();
+            soundDelay = Time.time +0.5f;
+        }
         count++;
         if (numBounce <= count &&hbState == eState.hbActive)//changes material after set number of bounces
         {

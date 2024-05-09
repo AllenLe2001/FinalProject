@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4743468075456543378}
+  - component: {fileID: 5591703736641026020}
   m_Layer: 0
   m_Name: Knight
   m_TagString: Untagged
@@ -34,6 +35,18 @@ Transform:
   - {fileID: 4128388759846468309}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5591703736641026020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4601912964960283761}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66c76b0cf879b1548ba2394eb42e2c4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6974246914192963904
 GameObject:
   m_ObjectHideFlags: 0
@@ -326,12 +339,12 @@ MonoBehaviour:
   knightWalk: {fileID: 3283040900844352911}
   knightDieSound: {fileID: 73411230260894958}
   knightDistance: 0
-  attackDistance: 1.6
+  attackDistance: 3
   isInRange: 0
   moveSpeed: 1
   chasePCoordX: 11
   chaseNCoordX: -11
-  chaseDistance: 4
+  chaseDistance: 6
   playerXcoord: 0
   isAttacking: 0
   isDead: 0

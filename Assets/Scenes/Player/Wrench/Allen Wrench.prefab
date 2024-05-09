@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4789689480611936994}
   - component: {fileID: 1915842739649710771}
   - component: {fileID: -2523726281344714193}
-  m_Layer: 18
+  m_Layer: 17
   m_Name: Allen Wrench
   m_TagString: Wrench
   m_Icon: {fileID: 0}
@@ -374,7 +374,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4770140687406759772}
   - component: {fileID: 8143427843810449830}
-  m_Layer: 18
+  m_Layer: 17
   m_Name: pixil-frame-0 (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

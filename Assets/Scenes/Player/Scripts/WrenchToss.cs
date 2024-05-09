@@ -10,7 +10,7 @@ public class WrenchToss : MonoBehaviour
     public GameObject wrench; //wrench prefab
     public float Delay = 7f; //wrench respawn timer
     private float activeTime; //timestamp for respawn
-    private bool hasWrench = true; //bool if player has wrench
+    public bool hasWrench = true; //bool if player has wrench
     public eState wrenchState = eState.initToss;
     public enum eState : int
     {
@@ -28,6 +28,11 @@ public class WrenchToss : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(activeTime <= Time.time)
+        {
+            hasWrench = true;
+        }
+        
         switch (wrenchState)
         {
             case (eState.initToss): //check if toss can be initiated
