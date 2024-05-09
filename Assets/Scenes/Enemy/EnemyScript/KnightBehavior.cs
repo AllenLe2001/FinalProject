@@ -36,6 +36,7 @@ public class KnightBehavior : MonoBehaviour
     public float chaseDistance = 2f;
     public float playerXcoord;
     public bool isAttacking;
+    public float minYVal;
     public bool isDead;
     public float timer = 0f;
     public Vector2 moveDirection;
@@ -82,6 +83,13 @@ public class KnightBehavior : MonoBehaviour
                 }
                 //moving the knight 
                 transform.Translate(moveDirection * moveSpeed * Time.deltaTime);
+
+                 //clamping the y value 
+                Vector3 currentPos = transform.position;
+
+                //preventing the knight from going on air
+                currentPos.y = Mathf.Clamp(currentPos.y, minYVal, minYVal;);
+                transform.position = currentPos;
             }
             break;
             case eState.kChase:
