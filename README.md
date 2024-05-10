@@ -1,8 +1,8 @@
 ## Skybound
 
-Enemy Design - 
+Enemy Design - Allen le
 
-Level Design - 
+Level Design - Mosawar Jamshady
 
 Player Movement - Mirek Kupczynski Jr
 
