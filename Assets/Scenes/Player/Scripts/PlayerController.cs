@@ -8,7 +8,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 	// A decent amount of help came from these tutorials: youtu.be/K1xZ-rycYY8 youtu.be/KKGdDBFcu0Q
-	
+	public Animator animator;
 	// Player state declaration
 	public enum eState : int
 	{
@@ -102,6 +102,7 @@ public class PlayerController : MonoBehaviour
 	// Input updates
 	private void Update()
 	{
+		animator.SetFloat("Speed", Mathf.Abs(_horizonalInput));
 		// Subtract these timers, they are immediately reset upon if the right conditions are met
         LastTimeOnFloor -= Time.deltaTime;
 		LastTimeOnWall -= Time.deltaTime;

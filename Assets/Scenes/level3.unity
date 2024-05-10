@@ -516,6 +516,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 11.58
       objectReference: {fileID: 0}
+    - target: {fileID: 2784406867133209514, guid: 82bec7b3546437e43ad7561e4a786f68, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 113404264}
     - target: {fileID: 4664621212527356068, guid: 82bec7b3546437e43ad7561e4a786f68, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.7
@@ -593,6 +597,11 @@ MonoBehaviour:
 --- !u!1 &113404261 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5582885446857000858, guid: 82bec7b3546437e43ad7561e4a786f68, type: 3}
+  m_PrefabInstance: {fileID: 113404257}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &113404264 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 285721923804242583, guid: 82bec7b3546437e43ad7561e4a786f68, type: 3}
   m_PrefabInstance: {fileID: 113404257}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &135662825

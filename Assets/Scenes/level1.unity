@@ -1085,6 +1085,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f14396793e1c93a4f9dc0234220b1392, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &1025390678 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 285721923804242583, guid: 82bec7b3546437e43ad7561e4a786f68, type: 3}
+  m_PrefabInstance: {fileID: 1117957726}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1107392814
 GameObject:
   m_ObjectHideFlags: 0
@@ -1177,6 +1182,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2784406867133209514, guid: 82bec7b3546437e43ad7561e4a786f68, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1025390678}
     - target: {fileID: 2784406867133209514, guid: 82bec7b3546437e43ad7561e4a786f68, type: 3}
       propertyPath: MoveScale
       value: 1000
