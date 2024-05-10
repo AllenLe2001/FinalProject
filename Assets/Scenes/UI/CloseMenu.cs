@@ -18,6 +18,14 @@ public class CloseMenu : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.Escape) && Time.time >= timestamp)
         {
+            if (onOff)
+            {
+                Time.timeScale = 1;
+            }
+            else
+            {
+                Time.timeScale = 0;
+            }
             onOff = !onOff;
             menu.SetActive(onOff);  
         }
@@ -27,5 +35,13 @@ public class CloseMenu : MonoBehaviour
         if (!Input.GetKey(KeyCode.Escape))
             onOff = false;
         timestamp = Time.time + 0.2f;
+        Time.timeScale = 1;
+    }
+    public void turnOn()
+    {
+        if (!Input.GetKey(KeyCode.Escape))
+            onOff = true;
+        timestamp = Time.time + 0.2f;
+        Time.timeScale = 0;
     }
 }
